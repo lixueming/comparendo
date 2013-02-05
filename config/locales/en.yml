@@ -1,0 +1,531 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other: ! '%{count} days'
+      x_minutes:
+        one: 1 minute
+        other: ! '%{count} minutes'
+      x_months:
+        one: 1 month
+        other: ! '%{count} months'
+      x_seconds:
+        one: 1 second
+        other: ! '%{count} seconds'
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match confirmation
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: ! 'Validation failed: %{errors}'
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      # custom
+      4_digit_postal_code: Please enter a valid 4-digit postal code
+      phone_swiss: Please enter a valid Swiss phone number
+      email: Please enter a valid email
+      url: Please enter a valid url
+      max_words: must be less than %{count} words
+      number: Please enter a valid number
+      company:
+        must_be_unique: muss eindeutig
+        your_region: Your state
+        company_location_must_not_be_default: Company location must be non-default
+        company_name_must_be_unique: Company name must be unique
+      offer:
+        invalid_date: End date must be greater than or equal start date
+    template:
+      body: ! 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
+  article:
+    create: New Article
+    edit: Edit Article
+    author: Author
+
+  general:
+    description: Description
+    email: Email
+    find: Find
+    home: Home
+    industries: Industries
+    name: Name
+    postal_code: Postal code
+    remember_me: Remember me
+    send: Send
+    sign_in: Sign in
+    sign_up: Sign up
+    step: Step
+    subject: Subject
+  top_menu:
+    home: Home
+    find_an_architect: Find an architect
+    request_for_quotation: Request for quotation
+    register_company: Register company
+    about: About
+    contact_us: Contact
+  offer_section:
+    submit_offer: Submit offer
+    get_quotes: Get quotes!
+  add_company_page2:
+    intro: |
+      Please state some detailed information about your company, organized as the exact address and contact information so
+      potential customers can find and contact easier, a profile picture, which to be a "flagship" of your company
+      should (for example, an impressive project), a brief description, and the subjects on which you specialize and
+      where you would like to receive project requests.
+    your_address: Your Address
+    your_profile: Your Profile
+  add_company_page3:
+    intro: |
+      <p>
+      Now insert your least a profile picture, which is a "flagship" of your company be
+      should (for example, an impressive project), and are also more pictures that your company to the outside
+      are present. Up to 20 images of any size are added, the images are for illustration
+      in your company profile automatically scaled and displayed in a gallery.
+      </p>
+      <p>
+      The first uploaded image is used as a profile picture (you can adjust later, but also fine).
+      </p>
+      <p>
+      In addition, please select the following in the subject areas that you specialize in and where you would like to receive project requests.
+      </p>
+    your_gallery: Your Gallery
+    gallery_intro: Here you can upload photos of your projects attractive, promotional material or other similar images. The gallery can be up to 20 images at any size up to 1024x768 pixels. Your business profile automatically scaled images are shown.
+    your_specialty: Your Specialties
+    specialty_intro: Please select from the following areas in which you specialize in and where you want to be contacted by customer preference for projects. A maximum of 10 subjects are selected.
+    your_company_location: Your Company Location
+    company_location_intro: Please select your company location by dragging the map marker below.
+  add_company_page4:
+    intro: |
+      <p>
+      Now select one of the following membership options. With the free <b>Basic membership</b> are already included a number of advantages, such as
+      a detailed profile visibility in search engines to list your company in the regional results, and more. However Inquires
+      fee (depending on the budget of the project, you can acquire each from 29 CHF).
+      </p>
+      <p>
+      When <b>Premium Membership</b> There is a monthly fee of 49.95 CHF, with no minimum contract term or notice period. This provides
+      highlighted listings in our search results, the possibility of a "Premium Partner" logo on your site, and Inquires: some more
+      to 50% discounted prices compared to the free membership.
+      </p>
+      <p>
+      The <b>Elite Membership</b> is our bid for the top companies in Switzerland. It costs 299.95 CHF per month, to only 10 companies in the whole
+      Switzerland is limited, and offers all the benefits of Premium membership and also a listing in the elite ranking, an exclusive "Elite Partner" logo, as well as
+      100% free online quote requests.
+      </p>
+      <p>
+      You can terminate the membership at any time.
+      </p>
+    your_membership: Your Membership
+  home_page:
+    title: "The best architects in Switzerland"
+    intro: |
+      Find a few clicks, the best architect for your desired tasks, each close to your location.
+      Browse through informative portfolios, read numerous customer reviews, or request a
+      free offer of the top architects in your area.
+  contact_page:
+    title: Contact Us
+    intro: |
+      You can always contact us via the contact form below, contact. We will contact you as soon as possible, usually within the next 12-24 hours. We look forward to hearing from you!
+  about_page:
+    title: About Us
+  jobs_page:
+    title: Jobs
+  privacy_page:
+    title: Privacy Statement
+  terms_page:
+    title: Terms and conditions
+  sitemap_page:
+    title: Sitemap
+  hints:
+    address: "The home address of your company that can be used for contact inquiries from potential customers (example: Industriestrasse 32)"
+    city: "Your location (example: Zug)"
+    contact_person: "The name of the person we should contact for project inquiries and other information. Example: \"John Doe\"."
+    email: Your e-mail address for inquiries contact
+    long_description: Here you can specify any additional information about your company. You can use HTML tags <span>&lt;p&gt;, &lt;/p&gt;, &lt;b&gt;, &lt;br&gt;</span> for formatting.
+    official_company_name: Please enter your official company name
+    phone: "Your phone number for contact requests (example: 041-46353563)"
+    please_select_your_region: Please select your region
+    postal_code: "Your ZIP code (example: 6300)"
+    short_description: Describe in brief your business in 1-2 sentences (eg, Meier AG is an established company since 1848 and has realized its long history, hundreds of architectural projects). You can use HTML tags <span>&lt;p&gt;, &lt;/p&gt;, &lt;b&gt;, &lt;br&gt;</span> for formatting.
+    website: "Your website (example: meier-architekten.ch)"
+  company_form:
+    your_gallery: Your Gallery
+    gallery_intro: Here you can upload photos of your projects attractive, promotional material or other similar images. The gallery can be up to 20 images at any size up to 1024x768 pixels. Your business profile automatically scaled images are shown.
+    edit_company: Edit Company
+    specialties: Specialties
+    short_description: Short Description
+    long_description: Long Description
+    cover_image: Cover Image
+    websites: Websites
+    phone_numbers: Phone Numbers
+    contact_info: Contact Info
+    basic_info: Basic Info
+    additional_info: Additional Info
+    save: save
+  company_show_page:
+    gallery: Gallery
+    review: Review
+    specialty: Specialty
+    additional_info: Additional Info
+    location_of: Location of
+    other_architects: Other Architects
+  change_password_page:
+    title: Change your password
+    fields:
+      password: New password
+      password_confirmation: Confirm new password
+      submit: Change my password
+  forgot_password_page:
+    title: Forgot your password?
+    fields:
+      email: Email
+      submit: Send me reset password instructions
+  fields:
+    address: Address
+    city: City
+    company_name: Company name
+    contact_person: Contact person
+    current_password: Current password
+    description: Description
+    email: Email
+    password: Password
+    password_confirmation: Password confirmation
+    phone_number: Phone number
+    postal_code: Postal code
+    region: Region
+    your_name: Your name
+  devise:
+    forgot_your_password: Forgot your password?
+    didnt_receive_confirmation_instructions: Didn't receive confirmation instructions?
+    resend_confirmation_instructions: Resend confirmation instructions
+    mailer:
+      reset_password_instructions:
+        instruction: Someone has requested a link to change your password, and you can do this through the link below.
+        note1: If you didn't request this, please ignore this email.
+        note2: Your password won't change until you access the link above and create a new one.
+      confirm_your_account_through_the_link_below: "You can confirm your account email through the link below:"
+  fileupload:
+    errors:
+      maxFileSize: "File is too big"
+      minFileSize: "File is too small"
+      acceptFileTypes: "Filetype not allowed"
+      maxNumberOfFiles: "Max number of files exceeded"
+      uploadedBytes: "Uploaded bytes exceed file size"
+      emptyResult: "Empty file upload result"
+    error: "Error"
+    start: "Start"
+    cancel: "Cancel"
+    destroy: "Delete"
+    buttons:
+      add_files: Add files
+      start_upload: Start upload
+      cancel_upload: Cancel upload
+      delete: Delete
+  architect: Architect
+  contact: "Contact"
+  guest: "Guest"
+  hello: "Hello"
+  last_advice: Last Advice
+  latest_news: Latest News
+  latest_offers: Latest Offers
+  login: "Log In"
+  loginwithfacebook: "Log in with Facebook"
+  logout: "Log out"  
+  register: "Register"
+  welcome: "Welcome"
+  searchcompany: "Find company"
+  requestoffer: "Request offer"
+  addcompany: "Add company"
+  searchdefault: "Architekt, location, project etc."
+  search: "Search" 
+  generic_title: "The best architects in Switzerland"
+  default_meta_tag_keywords: "default meta tag keywords"
+  default_meta_tag_description: "default meta tag description"
+  nextstep: "Next"
+  previousstep: "Previous"
+  companyname: "Company name"
+  companylocation: "Company location"
+  home: "Home"
+  contactperson: "Contact person"
+  address: "Address"
+  city: "City"
+  phone: "Phone"
+  email: "E-Mail"
+  website: "Website"
+  selectregion: Select region
+  description: "Short description (less than 100 words)"
+  region: "Region"
+  longdescription: "Detailed description"
+  nextstep3: "Continue to step 3"
+  nextstep4: "Continue to step 4"
+  previousstep1: "Back to step 1"  
+  previousstep2: "Back to step 2"
+  previousstep3: "Back to step 3"  
+  finish: "Finish"
+  im_looking_for: "I'm looking for"
+  register_your_company: "Register Your Company"
+  add_company_intro: |
+    <p>Here you can add your company to our directory. Please note that we strive for a high quality of our database,
+    and thus there are some important guidelines:</p>
+
+    <ul>
+      <li>You can add only one company in the register</li>
+      <li>You should be able to demonstrate to demand that you are the owner or are authorized as with a current
+        certificate of registration or an email from the company domain</li>
+      <li>It may take place after the entry in the register any name change more</li>
+    </ul>
+  how_does_it_work: "How does it work?"
+  last_entered: Last entered
+  your_region: Your Region
+  you_need_to_login_to_continue: You need to login to continue
+  switzerland: "Switzerland"
+  writereview: "Write review"
+
+
+  offer:
+#    select_project_type:
+#      sweden_architect_applications: "The applications of Schweden architects"
+#      choose_your_project_type: "Choose your project type"
+#      choose_your_category: "Choose your category"
+#      fill_out_your_formular: "Fill out your formular"
+#      we_will_find_an_architect: "We will find an architect for you"
+#      you_will_get_estimates_for_free: "You will get estimates for free"
+#      architects_in_sweden: "Architects in Schweden"
+#      forward: "Forward"
+    select_category:
+      sweden_architect_applications: "The applications of Schweden architects"
+      choose_your_category: "Choose your category"
+      fill_out_your_formular: "Fill out your formular"
+      we_will_find_an_architect: "We will find an architect for you"
+      you_will_get_estimates_for_free: "You will get estimates for free"
+      architects_in_sweden: "Architects in Schweden"
+      forward: "Forward"
+    new:
+      your_project: Your Project
+      select_the_details_of_the_project: Select the details of the project
+      land_available: Land available
+      button_yes: Yes
+      button_no: No
+      size_in_square_meters: Size in square meters
+      number_of_floors: Number of floors
+      number_of_rooms: Number of rooms
+      number_of_bathrooms: Number of bathrooms
+      label_start: Start
+      label_end: End
+      completing_project: Completing Project
+      what_is_your_estimated_budget: What is your estimated budget?
+      period_in_which_they_want_to_build: Period in which they want to build?
+      what_to_consider: What to consider?
+      button_submit: submit
+    created:
+      title: Offer Submitted
+      text: Thanks, we have received your request for a quote. We will review it, find matching architects, and contact them in order for them to send you quotes within 48-72 hours
+
+    notices:
+      your_project_has_been_submitted: Your project has been submitted
+      project_type_not_found: Project type not found
+
+  company:
+    index:
+      title: "Architect"
+
+  jvalidate:
+    required: "This field is required."
+    remote: "Please fix this field."
+    email: "Please enter a valid email address."
+    url: "Please enter a valid URL."
+    date: "Please enter a valid date."
+    dateISO: "Please enter a valid date (ISO)."
+    number: "Please enter a valid number."
+    digits: "Please enter only digits."
+    creditcard: "Please enter a valid credit card number."
+    equalTo: "Please enter the same value again."
+    accept: "Please enter a value with a valid extension."
+    maxlength: "Please enter no more than {0} characters."
+    minlength: "Please enter at least {0} characters."
+    rangelength: "Please enter a value between {0} and {1} characters long."
+    range: "Please enter a value between {0} and {1}."
+    max: "Please enter a value less than or equal to {0}."
+    min: "Please enter a value greater than or equal to {0}."

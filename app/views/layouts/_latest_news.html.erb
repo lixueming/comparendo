@@ -1,0 +1,11 @@
+<% if @newest_infos.present?%>
+	<h3><%= t(:latest_news) %></h3>
+	<ul>
+		<% @newest_infos.each do |article| %>
+	  	<li>
+	  		<%= link_to(article.title, {:controller => :article, :action => :show, :path => article.path})%>
+	  	</li>
+	  <% end %>
+	</ul>
+
+<% end %>

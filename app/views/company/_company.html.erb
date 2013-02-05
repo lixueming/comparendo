@@ -1,0 +1,75 @@
+<div class="company-container">
+  <div class="thumbnail-container">
+    <a href="<%= url_to_company(company) %>">
+      <%= render :partial => 'company_cover_image', :locals => {:company => company} %>
+    </a>
+  </div>
+  <div class="company-details-container">
+  	<div class="company-name-container">
+      	<p class="company-name">
+          <%= link_to_company(company) %>
+        </p>
+      </div>
+      <div class="company-rating-container">
+        <div class="star readonly" score="<%= company.rating %>"></div>
+      </div>
+      <!-- <div class="company-rating-container">
+ 	    	<img width="13" height="13" class="star" alt="Star" src="/assets/yellow-star.png">
+ 	    	<img width="13" height="13" class="star" alt="Star" src="/assets/yellow-star.png">
+ 	    	<img width="13" height="13" class="star" alt="Star" src="/assets/yellow-star.png">
+ 	    	<img width="13" height="13" class="star" alt="Star" src="/assets/yellow-star.png">
+ 	    	<img width="13" height="13" class="star" alt="Star" src="/assets/gray-star.png">
+      </div> -->
+  </div>
+  <input type="button" class="offerte-btn" value="Offerte Einholen" name="">
+  <div class="tab-container" id="tab-container-<%= company.id %>" data-easytabs="true">
+    <ul class="etabs">
+      <li class="tab active">
+        <a href="#tabs1-intro" class="active">Intro</a>
+      </li>
+      <li class="tab"><a href="#tabs-kontakt-<%= company.id %>">Kontakt</a></li>
+      <li class="tab"><a href="#tabs-katalog-<%= company.id %>">Katalog</a></li>
+      <li class="tab"><a href="#tabs-abbildungen-<%= company.id %>">Abbildungen</a></li>
+      <li class="tab"><a href="#tabs-referenzen-<%= company.id %>">Referenzen</a></li>
+      <li class="tab"><a href="#tabs-news-<%= company.id %>">News</a></li>
+    </ul>
+    <div class="panel-container">
+      <div id="tabs-intro-<%= company.id %>" style="display: block;" class="active">
+       <p><%= raw company.description %></p>
+      </div>
+       <div id="tabs-kontakt-<%= company.id %>" style="display: none;">
+       <p>
+        <%= company.contact_person %>,
+        <%= company.email %>,
+        <%= company.websites.join(",") %>,
+        <%= company.phone_numbers.join(",") %>,
+        <%= company.address %>,
+        <%= company.postal_code %>
+       </p>
+      </div>
+      <div id="tabs-katalog-<%= company.id %>" style="display: none;">
+      <p>die passenden Anbieter fir Ihr Projekt.</p>
+      </div>
+      <div id="tabs-abbildungen-<%= company.id %>" style="display: none;">
+      <p>Anbieter fir Ihr Projekt.</p>
+      </div>
+      <div id="tabs-referenzen-<%= company.id %>" style="display: none;">
+      <p>Finden Sie mit wenigen Mausklicks die passenden</p>
+      </div>
+      <div id="tabs-news-<%= company.id %>" style="display: none;">
+      <p>Finden Sie mit wenigen</p>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+  <div class="company-tags-container">
+    <% company.tags.each do |t| %>
+      <div class="company-tags">
+      <%= link_to company_index_url(:region => params[:region], :tag => t.name) do %>
+        <%= t.name %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="clr"></div>
+</div>

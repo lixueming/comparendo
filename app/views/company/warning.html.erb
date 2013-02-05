@@ -1,0 +1,40 @@
+<% content_for :title, t(:addcompany) %>
+
+<div id="main-left-wrapper">
+	<h2><%= t(:addcompany) %></h2>
+  <!-- # TODO fix message and move to de.yml -->
+  <p>User cannot have multiple Companies</p>
+	<br>
+
+</div>
+
+<div id="main-right-wrapper">
+  <h3><%= t(:how_does_it_work) %></h3>
+  <ul>
+    <li>
+      <a href="#">Einmal ausfüllen</a>
+    </li>
+    <li>
+      <a href="#">Schnell 3 Offerten erhalten</a>
+    </li>
+    <li>
+      <a href="#">Kostenlos</a>
+    </li>
+    <li>
+      <a href="#">Unverbindlich</a>
+    </li>
+    <li>
+      <a href="#">Von den besten Architekten in Ihrer Umgebung</a>
+    </li>
+  </ul>
+   
+  <div class="clr"><br><br><br></div>
+
+  <%= render "layouts/latest_news"%>
+
+  <div class="clr"><br><br><br></div>  
+
+  <%= render :partial => 'add_company_sidebar' %>
+
+</div>
+<div class="clr"></div>

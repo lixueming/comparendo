@@ -1,0 +1,18 @@
+<h2><%= t('devise.resend_confirmation_instructions') %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+  <% if f.object.errors.messages.has_key?(:confirmation_token) %>
+  	<%= t('devise.confirmations.activated') %>
+  <% else %>
+  	<%= devise_error_messages! %>
+  <% end %>
+
+  <div>
+    <%= f.label :email, t('fields.email') %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div><%= f.submit t('devise.resend_confirmation_instructions') %></div>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

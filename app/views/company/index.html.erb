@@ -1,0 +1,65 @@
+<% content_for :head do %>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      ga.maps.hooks.showMapMulti();
+    });
+  </script>
+<% end %>
+
+<div id="main-left-wrapper" >
+  <h2><%=@title%></h2>
+
+  <% if @companies.any? %>
+    <% if google_points_as_json %>
+      <div class="map-section">
+        <div class="map_canvas readonly_multiple" style="width: 100%; height: 300px;"
+             zoom="9"
+             data="<%= google_points_as_json %>"></div>
+      </div>
+    <% end %>
+
+    <% unless  Company.sponsors.empty?%>
+      <div class="sponsored-section">
+        Sponsoren
+        <% Company.sponsors.each do |company| %>
+          <%= render partial: "company", locals: {company: company} %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="result-section">
+      <% @companies.each do |company| %>
+        <%= render partial: "company", locals: {company: company} %>
+      <% end %>
+    </div>
+    <%= paginate @companies %>
+  <% else %>
+    <p>No results found</p>
+  <% end %>
+</div>
+
+<div id="main-right-wrapper">
+  <!-- TODO: replace -->
+  <h3><%= t(:how_does_it_work) %></h3>
+  <ul>
+    <li>
+      <%= link_to "Einmal ausfüllen", nil %>
+    </li>
+    <li>
+      <%= link_to "Schnell 3 Offerten erhalten", nil %>
+    </li>
+    <li>
+      <%= link_to "Kostenlos", nil %>
+    </li>
+    <li>
+      <%= link_to "Unverbindlich", nil %>
+    </li>
+    <li>
+      <%= link_to "Von den besten Architekten in Ihrer Umgebung", nil %>
+    </li>
+  </ul>
+
+  <div class="clr"><br><br><br></div>
+  <%= render "layouts/latest_news"%>
+</div>
+<div class="clr"></div>

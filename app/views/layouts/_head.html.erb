@@ -1,0 +1,14 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= meta_tag_description %>
+<%= meta_tag_keywords %>
+<%= page_title %>
+<%= csrf_meta_tag %>
+<%= stylesheet_link_tag 'application', :media => 'all' %>
+<%= javascript_include_tag 'application' %>
+<link rel="shortcut icon" href="/favicon.ico" />
+<script type="text/javascript">
+    $(document).ready(function() {
+        I18n.defaultLocale = "<%= I18n.default_locale %>";
+        I18n.locale = "<%= I18n.locale %>";
+    })
+</script>

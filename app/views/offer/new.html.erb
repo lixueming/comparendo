@@ -1,0 +1,151 @@
+<div id="main-left-wrapper">
+  <h2><%= t('.your_project') %></h2>
+  <%= form_for @project, :url => offer_index_url, :method => :post,
+               :html => {:id => 'new_offer_form'} do |f| %>
+    <input type="hidden" name="project[project_type_id]" value="<%= @project.project_type.id %>" />
+
+    <h2><%= t('.select_the_details_of_the_project') %></h2>
+
+    <!-- land available -->
+    <div class="clearfix">
+      <label class="form-label"><%= t('.land_available') %></label>
+      <div id="project_data_land_available_buttons" class="btn-group" data-toggle="buttons-radio">
+        <button type="button" class="btn active" value="1"><%= t('.button_yes') %></button>
+        <button type="button" class="btn" value="0"><%= t('.button_no') %></button>
+      </div>
+      <input type="hidden" id="project_data_land_available" name="project[data][land_available]" value="1" />
+      <br />
+      <script type="text/javascript">
+        $('#project_data_land_available_buttons button').click(function (event) {
+          $('#project_data_land_available').attr('value', $(this).attr('value'));
+        });
+      </script>
+    </div>
+
+    <!-- size in square meters -->
+    <div class="clearfix">
+      <label class="form-label"><%= t('.size_in_square_meters') %></label>
+      <div class="slider-container">
+        <input type="slider" id="project_data_size" name="project[data][size]" value="100" />
+        <script type="text/javascript">
+          $('#project_data_size').slider({
+            from: 10,
+            to: 10000,
+            step: 10,
+            round: 10,
+            smooth: false,
+            heterogeneity: ["25/200", "50/1000", "75/5000"],
+            scale: [10, 200, 1000, 5000, 10000],
+            skin: "round"
+          })
+        </script>
+      </div>
+    </div>
+
+    <!-- number of floors -->
+    <div class="clearfix">
+      <label class="form-label"><%= t('.number_of_floors') %></label>
+      <div class="slider-container">
+        <input type="slider" id="project_data_floors" name="project[data][floors]" value="1" />
+        <script type="text/javascript">
+          $('#project_data_floors').slider({
+            from: 1,
+            to: 10,
+            step: 1,
+            round: 1,
+            smooth: false,
+            skin: "round"
+          })
+        </script>
+      </div>
+    </div>
+
+    <!-- number of rooms -->
+    <div class="clearfix">
+      <label class="form-label"><%= t('.number_of_rooms') %></label>
+      <div class="slider-container">
+        <input type="slider" id="project_data_rooms" name="project[data][rooms]" value="2" />
+        <script type="text/javascript">
+          $('#project_data_rooms').slider({
+            from: 1,
+            to: 20,
+            step: 1,
+            round: 1,
+            smooth: false,
+            skin: "round"
+          })
+        </script>
+      </div>
+    </div>
+
+    <!-- number of bath rooms -->
+    <div class="clearfix">
+      <label class="form-label"><%= t('.number_of_bathrooms') %></label>
+      <div class="slider-container">
+        <input type="slider" id="project_data_bathrooms" name="project[data][bathrooms]" value="1" />
+        <script type="text/javascript">
+          $('#project_data_bathrooms').slider({
+            from: 1,
+            to: 10,
+            step: 1,
+            round: 1,
+            smooth: false,
+            skin: "round"
+          })
+        </script>
+      </div>
+    </div>
+
+    <hr />
+
+    <h2><%= t('.completing_project') %></h2>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t('.what_is_your_estimated_budget') %></label>
+      <div class="control-group">
+        <%= f.text_field :budget %> CHF
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t('.period_in_which_they_want_to_build') %></label>
+      <label class="form-label"><%= t('.label_start') %></label>
+      <div class="control-group">
+        <select id="project_start_date_month" name="project[start_date_month]">
+          <% 1.upto(12) do |month| %>
+            <option value="<%= month %>"><%= t('date.month_names')[month]%></option>
+          <% end %>
+        </select>
+        <select id="project_start_date_year" name="project[start_date_year]">
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+        </select>
+      </div>
+      <label class="form-label"><%= t('.label_end') %></label>
+      <div class="control-group">
+        <select id="project_end_date_month" name="project[end_date_month]">
+          <% 1.upto(12) do |month| %>
+            <option value="<%= month %>"><%= t('date.month_names')[month]%></option>
+          <% end %>
+        </select>
+        <select id="project_end_date_year" name="project[end_date_year]">
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+        </select>
+      </div>
+    </div>
+
+    <%= f.submit t('.button_submit'), :class => 'btn' %>
+  <% end %>
+</div>
+
+<div id="main-right-wrapper">
+  <h3><%= t('.what_to_consider') %></h3>
+</div>
+<div class="clr"></div>

@@ -1,0 +1,11 @@
+<div style="display:none;">  
+  <% url = @region ? quote_details_path : region_select_path %>
+  <%= form_tag(url, id: "quote-details-params") do %>
+   <% if @subcategory %>
+     <%= hidden_field_tag "subcategory_id", @subcategory.id %>
+   <% end %>
+   <% if @region %>
+     <%= hidden_field_tag "region_id", @region.id %>
+   <% end %>
+  <% end %>
+</div>

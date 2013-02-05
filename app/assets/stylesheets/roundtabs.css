@@ -1,0 +1,30 @@
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1;
+}
+
+
+.navbar .brand {
+  color: #555555;  
+  height : 34px;
+}
+.container-fluid  a{
+  text-decoration:none;
+}
+.container-fluid  a:hover{
+  text-decoration:none;
+  color:white;
+}
+
+
+.container-fluid .divider {
+    color: #999999;   
+}
+

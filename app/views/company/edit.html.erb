@@ -1,0 +1,200 @@
+<h2><%= t('company_form.edit_company') %></h2>
+
+<div class="left-panel">
+  <%= form_for @company, :url => {:action => :update},
+               :html => {:id => 'company_edit_form',
+                         :class => 'edit_company auto_validation_form'} do |f| %>
+    <div class="form-section">
+      <div class="title"><%= t('company_form.basic_info') %></div>
+      <div class="content">
+        <div class="clearfix">
+          <%= f.label :name, t('fields.company_name') %>
+          <div class="control-group">
+            <%= f.text_field :name, :class => 'tooltippable', :title => t('hints.official_company_name'), 'original-name' => @company.name %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :region, t('fields.region') %>
+          <div class="control-group">
+            <select id="company_region_id" name="company[region_id]" class="tooltippable" title="<%= t('hints.please_select_your_region') %>">
+              <% @regions.each do |region| %>
+                <option value="<%= region.id %>" <%= (@company.region_id == region.id) ? 'selected="selected"' : '' %>>
+                  <%= region.name %>
+                </option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.submit t('company_form.save') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="title"><%= t('company_form.contact_info') %></div>
+      <div class="content">
+        <div class="clearfix">
+          <label class="form-label" for="company_contact_person"><%= t(:contactperson) %></label>
+          <div class="control-group">
+            <%= f.text_field :contact_person, :class => 'form-input tooltippable', :title => t('hints.contact_person') %>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <%= f.label :address, t('fields.address') %>
+          <div class="control-group">
+            <%= f.text_area :address, {:rows => 5, :class => 'tooltippable', :title => t('hints.address')} %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <label class="form-label"><%= t('general.postal_code') %></label>
+          <div class="control-group">
+            <%= f.text_field :postal_code, :class => 'form-input tooltippable', :title => t('hints.postal_code') %>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="form-label"><%= t(:city) %></label>
+          <div class="control-group">
+            <%= f.text_field :city, :class => 'form-input tooltippable autocomplete',
+                             :title => t('hints.city'),
+                             'source-url' => name_autocomplete_cities_url(:region_id => @company.region.id),
+                             :value => (@company.city) ? @company.city.name : '' %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :phone_numbers, t('fields.phone_number') %>
+          <% unless @company.phone_numbers.nil? %>
+            <% @company.phone_numbers.each do |phone_number| %>
+              <div class="control-group">
+                <input class="company_phone_number tooltippable" name="company[phone_numbers][]"
+                       title="<%= t('hints.phone') %>"
+                       type="text" value="<%= phone_number %>" />
+              </div>
+            <% end %>
+          <% end %>
+
+          <% if @company.phone_numbers.nil? or @company.phone_numbers.length == 0  %>
+            <div class="control-group">
+              <input class="company_phone_number tooltippable" name="company[phone_numbers][]" type="text"
+                     title="<%= t('hints.phone') %>"
+                     value="" /><br />
+            </div>
+          <% end %>
+        </div>
+        <div class="clearfix">
+          <%= f.label :email, t('fields.email') %>
+          <div class="control-group">
+            <%= f.text_field :email, :class => 'tooltippable', :title => t('hints.email') %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :websites, t('company_form.websites') %>
+          <% unless @company.websites.nil? %>
+            <% @company.websites.each do |website| %>
+              <div class="control-group">
+                <input class="company_website tooltippable" name="company[websites][]" type="text"
+                       title="<%= t('hints.website') %>"
+                       value="<%= website %>" /><br />
+              </div>
+            <% end %>
+          <% end %>
+
+          <% if @company.websites.nil? or @company.websites.length == 0 %>
+            <div class="control-group">
+              <input class="company_website tooltippable" name="company[websites][]" type="text"
+                     title="<%= t('hints.website') %>" /><br />
+            </div>
+          <% end %>
+        </div>
+        <div class="clearfix">
+          <%= f.submit t('company_form.save') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="title"><%= t('company_form.additional_info') %></div>
+      <div class="content">
+        <div class="alert alert-success" style="display: none;"></div>
+        <div class="alert alert-error" style="display: none;"></div>
+        <div class="alert alert-info loading" style="display: none;">Saving</div>
+
+        <div class="clearfix">
+          <%= f.label :description, t('company_form.short_description') %>
+          <div class="control-group">
+            <%= f.text_area :description, :class => 'tooltippable ckeditor', :title => t('hints.short_description'), :rows => 5 %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :long_description, t('company_form.long_description') %>
+          <div class="control-group">
+            <%= f.text_area :long_description, {:rows => 5, :class => 'tooltippable', :title => t('hints.long_description')} %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.label :specialties, t('company_form.specialties') %>
+          <div class="control-group">
+            <%= f.text_field :specialties, {:class => 'tagsinputtable tooltippable'} %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.submit t('company_form.save') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="title"><%= t('add_company_page3.your_company_location') %></div>
+      <div class="content">
+        <div id="map_canvas" style="width: 600px; height: 400px;"></div>
+
+        <div class="clearfix">
+          <div class="control-group" style="float: left; width: 40%;">
+            <%= f.label :latitude %>
+            <%= f.text_field :latitude %>
+          </div>
+
+          <div class="control-group" style="float: left; width: 40%;">
+            <%= f.label :longitude %>
+            <%= f.text_field :longitude %>
+          </div>
+        </div>
+        <div class="clearfix">
+          <%= f.submit t('company_form.save') %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-section">
+    <div class="title"><%= t('company_form.cover_image') %></div>
+    <div class="content">
+      <%= form_for @company, :url => {:action => :update_cover_image}, :html => {:id => 'cover_image_form'} do |f| %>
+        <div id="cover_image_display" class="clearfix">
+          <div class="control-group">
+            <%= render :partial => 'company_cover_image', :locals => {:company => @company} %>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <%= f.file_field :cover_image %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="title"><%= t('company_form.your_gallery') %></div>
+    <div class="content">
+      <div class="clearfix">
+        <p><%= t('company_form.gallery_intro') %></p>
+
+        <%= form_for [@company, Image.new], :format => :json, :html => { :multipart => true, :id => "fileupload" } do |f| %>
+          <%= render :partial => 'layouts/image_form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

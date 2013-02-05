@@ -1,0 +1,8 @@
+<% size||= '200x140'%>
+<% if company.cover_image_uid %>
+  <%= image_tag company.cover_image.thumb(size).url %>
+<% elsif company.images.length > 0 %>
+  <%= image_tag company.images.first.image.thumb(size).url %>
+<% else %>
+  <%= image_tag 'company-icon.jpg' %>
+<% end %>

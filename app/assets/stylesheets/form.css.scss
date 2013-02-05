@@ -1,0 +1,30 @@
+/*** contact form ***/
+#contact_form #message_subject {
+  width: 400px;
+}
+
+#contact_form #message_body {
+  width: 400px;
+}
+
+/*** div.form-section ***/
+div.form-section {
+  background-color: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+div.form-section div.title {
+  padding: 0 0 5px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+}
+
+div.form-section div.content {
+  padding: 5px 0 0;
+}
+
+div.form-section div.alert {
+  margin-bottom: 5px;
+}
+

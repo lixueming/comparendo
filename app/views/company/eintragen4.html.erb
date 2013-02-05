@@ -1,0 +1,100 @@
+<% content_for :title, t(:addcompany) %>
+
+
+<div id="main-left-wrapper">
+
+	<h2><%= t(:addcompany) %> - <%= t('general.step') %> 4</h2>
+
+  <%= t('add_company_page4.intro').html_safe %>
+	
+
+	<br>
+
+  <h2><%= t('add_company_page4.your_membership') %></h2>
+
+  <div class="membership-selection-container">
+    <div class="membership-selection">
+      <div class="title-section">
+        <div class="title">BASIS</div>
+        <div class="subtitle">MITGLIEDSCHAFT</div>
+      </div>
+      <div class="price-section">
+        KOSTENLOS
+      </div>
+      <div class="content-section">
+        <ul>
+          <li>400GB Monthly Bandwidth</li>
+          <li>25GB Web Storage</li>
+          <li>24/7 Customer Support</li>
+          <li>2 Free Domain Names</li>
+          <li>$20 Google Adwords</li>
+          <li>100MB Space/Email Account</li>
+        </ul>
+        <a href="<%= company_add_finish_url %>">ABSCHLIESSEN</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="membership-selection-container">
+    <div class="membership-selection">
+      <div class="title-section">
+        <div class="title">PREMIUM</div>
+        <div class="subtitle">MITGLIEDSCHAFT</div>
+        <div class="extra">
+          Am häufigsten gewählt<br/>
+          Ideal für die meisten Firmen
+        </div>
+      </div>
+      <div class="price-section">
+        49.95 CHF pro Monat
+      </div>
+      <div class="content-section">
+        <ul>
+          <li>500GB Monthly Bandwidth</li>
+          <li>50GB Web Storage</li>
+          <li>24/7 Customer Support</li>
+          <li>5 Free Domain Names</li>
+          <li>$30 Google Adwords</li>
+          <li>125MB Space/Email Account</li>
+          <li>40 Email Accounts</li>
+        </ul>
+        <a href="<%= company_payment_url %>">ABSCHLIESSEN</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="membership-selection-container">
+    <div class="membership-selection">
+      <div class="title-section">
+        <div class="title">ELITE</div>
+        <div class="subtitle">MITGLIEDSCHAFT</div>
+      </div>
+      <div class="price-section">
+        299.95 CHF pro Monat
+      </div>
+      <div class="content-section">
+        <ul>
+          <li>Nur 10 Untemehmen</li>
+          <li>100% kostenlose Offerten</li>
+          <li>24/7 Customer Support</li>
+          <li>5 Free Domain Names</li>
+          <li>$50 Google Adwords</li>
+          <li>150MB Space/Email Account</li>
+          <li>Unlimited Email Accounts</li>
+        </ul>
+        <div style="text-align: center;">
+          <a href="<%= company_add_finish_url %>">ABSCHLIESSEN</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  <center>
+    <a href="<%= company_add_finish_url %>"><img src="/images/pricing-table.png" border=0></a>
+  </center>
+  -->
+</div>
+
+<%= render :partial => 'add_company_sidebar' %>
+<div class="clr"></div>

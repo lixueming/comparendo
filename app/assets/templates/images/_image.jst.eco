@@ -1,0 +1,11 @@
+<div style="display: inline-block;">
+  <img alt="<%= @image.name %>" src="<%= @image.url %>">
+  <% if @with_delete_form: %>
+    <form accept-charset="UTF-8" action="<%= @image.delete_url %>" class="edit_image" method="post">
+      <div style="margin:0;padding:0;display:inline">
+        <input name="_method" type="hidden" value="delete">
+      </div>
+      <input name="commit" type="submit" value="delete">
+    </form>
+  <% end %>
+</div>

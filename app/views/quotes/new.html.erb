@@ -1,0 +1,83 @@
+<div id="main-left-wrapper">
+    <h2>Geben Sie nun bitte einige zusätzliche Informationen zu Ihrem Projekt an</h2>
+    <%= form_for @project, url: create_quote_details_path, html: {id: 'quote_details_form'} do |f| %>
+
+        <% project_option_indx = 0 %>
+        <% @subcategory.questions.each do |q| %>
+            <label><%= q.description %></label>
+             <%= build_project_option_field(q) %>
+            <hr>
+        <% end %>
+
+        <div class="clearfix margintop50px">
+            <%= f.label :description %>
+            <%= f.text_area :description, :rows => 5,:title => t('hints.short_description'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip" %>
+        </div>
+
+        <!-- TODO numeric field + currency field, default 1000 CHF -->
+        <div class="clearfix budget border-section">
+            <%= f.label :budget %>
+            <%= f.text_field :budget, value: "1000", class: "clearme", :title => t('hints.website'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip"%>
+            <%= f.text_field :currency, value: "CHF", class: "clearme" , :title => t('hints.website'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip"%>
+        </div>
+
+        <!-- TODO timeframe (Start-End, two calendar selects) -->
+        <div class="clearfix timeframe border-section">
+            <label>Timeframe</label>
+            <div>
+                <%= f.label :start_date %>
+                <%= f.text_field :start_date, class: "calendar add_tooltip" , :title => t('hints.website'),:data => {:placement=>'right', :trigger => 'focus'}%>
+                <%= f.label :end_date %>
+                <%= f.text_field :end_date, class: "calendar add_tooltip" , :title => t('hints.website'),:data => {:placement=>'right', :trigger => 'focus'}%>
+            </div>
+        </div>
+
+        <div class="clearfix border-section">
+          <div id="location-toggle-button">
+            <% if @region %>
+              <input type="checkbox" checked="checked"/>
+              <input type="hidden" name="project[region_id]" id="project_region_id" value="<%= @region.id %>"/>
+            <% else %>
+              <input type="checkbox"/>
+              <input type="hidden" name="project[region_id]" id="project_region_id" value=""/>
+            <% end %>
+          </div>
+          <% if @region %>
+            <%= select_tag :region, options_for_select(Region.all.map{|r| [r.name, r.id]}, @region.id ), :title => t('hints.website'),:data => {:placement=>'right'}, :class => "add_tooltip" %>
+          <% else %>
+            <%= select_tag :region, options_for_select(Region.all.map{|r| [r.name, r.id]}), style: "display: none;" , :title => t('hints.website'),:data => {:placement=>'right'}, :class => "add_tooltip"%>
+          <% end %>
+        </div>
+
+        <hr>
+
+        <div class="clearfix">
+            <%= f.submit 'Weiter' %>
+        </div>
+    <% end %>
+</div>
+
+<div id="main-right-wrapper">
+  <h3><%= t(:how_does_it_work) %></h3>
+  <ul>
+    <li class="one-bul"><a href="#">Kurzes Formular</a></li>
+    <li class="two-bul"><a href="#">Abschicken</a></li>
+    <li class="three-bul"><a href="#">3 Offerten erhalten</a></li>
+  </ul>
+
+  <div class="clr"><br><br><br></div>
+
+  <%= render "layouts/latest_news"%>
+
+  <div class="clr"><br><br><br></div>
+
+  <h3>Top-Anbieter:</h3>
+  <ul>
+    <li><a href="#">Geprüft durch uns</a></li>
+    <li><a href="#">Hintergrund-Check</a></li>
+    <li><a href="#">Interview</a></li>
+  </ul>
+  
+</div>  
+
+<div class="clr"></div>

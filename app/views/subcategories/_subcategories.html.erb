@@ -1,0 +1,8 @@
+<ul style="list-style: none outside none;">
+	<% @subcategories.each do |sub| %>
+	  <li>
+	  	<%= check_box_tag "subcategory_#{sub.id}", sub.name %>
+	  	<%= label_tag "subcategory_#{sub.id}", sub.name, style: "display: inline;" %>
+	  </li>
+	<% end %>
+</ul>

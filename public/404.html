@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seite nicht gefunden (404)</title>
+  <style type="text/css">
+    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    div.dialog {
+      width: 25em;
+      padding: 0 4em;
+      margin: 4em auto 0 auto;
+      border: 1px solid #ccc;
+      border-right-color: #999;
+      border-bottom-color: #999;
+    }
+    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+  </style>
+</head>
+
+<body>
+  <!-- This file lives in public/404.html -->
+  <!--Это 404 страница-->
+  <!--<div class="dialog">-->
+  <div id="banner-wrapper">
+    <h1> Seite nicht gefunden (404) </h1>
+  </div>
+
+  <div id="main-left-wrapper">
+      <h2><%= t('home_page.title') %></h2>
+      <p style='padding-right: 20px;'><%= t('home_page.intro') %></p>
+
+      <br />
+
+      <div id="searchtable">
+          <%= form_tag company_index_url, :method => :get do %>
+          <%= t(:im_looking_for) %>
+          <%= text_field_tag "q", "Solaranlagen",
+          {:id=>"industry", :class=>"gray ac_input clearme",
+          :data => {:autocomplete_source=>autocomplete_company_tag_path}} %>
+
+
+          in
+          <%= text_field_tag "region", "Zürich",
+          {:id=>"area", :class=>"gray autocomplete clearme",
+          :data => {:autocomplete_source=>autocomplete_region_city_path}} %>
+
+
+          <input id="search" value="<%= t('general.find') %>" type="submit" class="button">
+          <% end %>
+      </div>
+
+      <br />
+
+      <br />
+
+
+
+      <!-- -->
+      <div class="clr"></div>
+
+      <h2>Top 5 Architekten in Bern:</h2>
+      <div id="top-5-wrapper">
+          <div class="company-container">
+              <div class="thumbnail-container">
+                  thumb
+              </div>
+              <div class="company-details-container">
+                  <div class="company-name-container">
+                      <p class="company-name">Phalt Architekten AG</p>
+                  </div>
+                  <div class="company-rating-container">
+                      <div class="star readonly" score="4"></div>
+                  </div>
+              </div>
+              <input name="" type="button" value="Offerte Einholen" class="offerte-btn" />
+
+              <div id="tab-container2" class='tab-container'>
+                  <ul class='etabs'>
+                      <li class='tab'><a href="#tabs1-intro1">Intro</a></li>
+                      <li class='tab'><a href="#tabs1-kontakt1">Kontakt</a></li>
+                      <li class='tab'><a href="#tabs1-katalog1">Katalog</a></li>
+                      <li class='tab'><a href="#tabs1-abbildungen1">Abbildungen</a></li>
+                      <li class='tab'><a href="#tabs1-referenzen1">Referenzen</a></li>
+                      <li class='tab'><a href="#tabs1-news1">News</a></li>
+                  </ul>
+                  <div class='panel-container'>
+                      <div id="tabs1-intro1">
+                          <p>Finden Sie mit wenigen Mausklicks die passenden Anbieter fir Ihr Projekt.</p>
+                      </div>
+                      <div id="tabs1-kontakt1">
+                          <p>Finden Sie.</p>
+                      </div>
+                      <div id="tabs1-katalog1">
+                          <p>die passenden Anbieter fir Ihr Projekt.</p>
+                      </div>
+                      <div id="tabs1-abbildungen1">
+                          <p>Anbieter fir Ihr Projekt.</p>
+                      </div>
+                      <div id="tabs1-referenzen1">
+                          <p>Finden Sie mit wenigen Mausklicks die passenden</p>
+                      </div>
+                      <div id="tabs1-news1">
+                          <p>Finden Sie mit wenigen</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="clr"></div>
+              <div class="company-tags-container">
+                  <div class="company-tags">
+                      <a href="#">sample tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">sample of a very long tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">another sample tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">again, yet another sample tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">again, yet another sample tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">sample tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">another sample tag</a>
+                  </div>
+                  <div class="company-tags">
+                      <a href="#">sample</a>
+                  </div>
+              </div>
+              <div class="clr"></div>
+          </div>
+      </div>
+      <!-- -->
+
+  </div>
+
+
+
+      <div id="main-right-wrapper">
+
+
+          <h3><%= t(:how_does_it_work) %></h3>
+          <ul>
+              <li class="one-bul"><a href="#">Kurzes Formular ausfüllen</a></li>
+              <li class="two-bul"><a href="#">Abschicken</a></li>
+              <li class="three-bul"><a href="#">3 Offerten erhalten</a></li>
+          </ul>
+
+          <div class="clr"><br><br><br></div>
+
+          <%= render "layouts/latest_news"%>
+
+          <div class="clr"><br><br><br></div>
+
+          <h3>Top-Anbieter:</h3>
+          <ul>
+              <li><a href="#">Geprüft durch uns</a></li>
+              <li><a href="#">Hintergrund-Check</a></li>
+              <li><a href="#">Interview</a></li>
+          </ul>
+
+      </div>
+      <div class="clr"></div>
+    <!--<h1>The page you were looking for doesn't exist.</h1>-->
+    <!--<p>You may have mistyped the address or the page may have moved.</p>-->
+  <!--</div>-->
+
+</body>
+</html>

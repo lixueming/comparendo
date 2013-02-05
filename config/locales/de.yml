@@ -1,0 +1,536 @@
+de:
+  date:
+    abbr_day_names:
+    - So
+    - Mo
+    - Di
+    - Mi
+    - Do
+    - Fr
+    - Sa
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mär
+    - Apr
+    - Mai
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Okt
+    - Nov
+    - Dez
+    day_names:
+    - Sonntag
+    - Montag
+    - Dienstag
+    - Mittwoch
+    - Donnerstag
+    - Freitag
+    - Samstag
+    formats:
+      default: ! '%d.%m.%Y'
+      long: ! '%e. %B %Y'
+      short: ! '%e. %b'
+    month_names:
+    -
+    - Januar
+    - Februar
+    - März
+    - April
+    - Mai
+    - Juni
+    - Juli
+    - August
+    - September
+    - Oktober
+    - November
+    - Dezember
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: etwa eine Stunde
+        other: etwa %{count} Stunden
+      about_x_months:
+        one: etwa ein Monat
+        other: etwa %{count} Monate
+      about_x_years:
+        one: etwa ein Jahr
+        other: etwa %{count} Jahre
+      almost_x_years:
+        one: fast ein Jahr
+        other: fast %{count} Jahre
+      half_a_minute: eine halbe Minute
+      less_than_x_minutes:
+        one: weniger als eine Minute
+        other: weniger als %{count} Minuten
+      less_than_x_seconds:
+        one: weniger als eine Sekunde
+        other: weniger als %{count} Sekunden
+      over_x_years:
+        one: mehr als ein Jahr
+        other: mehr als %{count} Jahre
+      x_days:
+        one: ein Tag
+        other: ! '%{count} Tage'
+      x_minutes:
+        one: eine Minute
+        other: ! '%{count} Minuten'
+      x_months:
+        one: ein Monat
+        other: ! '%{count} Monate'
+      x_seconds:
+        one: eine Sekunde
+        other: ! '%{count} Sekunden'
+    prompts:
+      day: Tag
+      hour: Stunden
+      minute: Minuten
+      month: Monat
+      second: Sekunden
+      year: Jahr
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: muss akzeptiert werden
+      blank: muss ausgefüllt werden
+      confirmation: stimmt nicht mit der Bestätigung überein
+      empty: muss ausgefüllt werden
+      equal_to: muss genau %{count} sein
+      even: muss gerade sein
+      exclusion: ist nicht verfügbar
+      greater_than: muss größer als %{count} sein
+      greater_than_or_equal_to: muss größer oder gleich %{count} sein
+      inclusion: ist kein gültiger Wert
+      invalid: ist nicht gültig
+      less_than: muss kleiner als %{count} sein
+      less_than_or_equal_to: muss kleiner oder gleich %{count} sein
+      not_a_number: ist keine Zahl
+      not_an_integer: muss ganzzahlig sein
+      odd: muss ungerade sein
+      record_invalid: ! 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+      taken: Dieser Name ist bereits vergeben
+      too_long: ist zu lang (nicht mehr als %{count} Zeichen)
+      too_short: ist zu kurz (nicht weniger als %{count} Zeichen)
+      wrong_length: hat die falsche Länge (muss genau %{count} Zeichen haben)
+      # custom
+      4_digit_postal_code: Bitte geben Sie eine gültige 4-stellige Postleitzahl
+      phone_swiss: Bitte geben Sie eine gültige Schweizer Telefonnummer
+      email: Bitte geben Sie eine gültige E-Mail
+      url: Bitte geben Sie eine gültige URL
+      max_words: muß weniger als {0} Wörter
+      number: Bitte geben Sie eine gültige Zahl
+      company:
+        must_be_unique: muss eindeutig
+        your_region: Ihr Kanton
+        company_location_must_not_be_default: Sitz der Gesellschaft darf nicht dem Standard sein
+        company_name_must_be_unique: Firma Name muss eindeutig sein
+      offer:
+        invalid_date: Enddatum muss größer als oder gleich Startdatum
+
+    template:
+      body: ! 'Bitte überprüfen Sie die folgenden Felder:'
+      header:
+        one: ! 'Konnte %{model} nicht speichern: ein Fehler.'
+        other: ! 'Konnte %{model} nicht speichern: %{count} Fehler.'
+  helpers:
+    select:
+      prompt: Bitte wählen
+    submit:
+      create: ! '%{model} erstellen'
+      submit: ! '%{model} speichern'
+      update: ! '%{model} aktualisieren'
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: ! '%n %u'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: €
+    format:
+      delimiter: .
+      precision: 2
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            one: Milliarde
+            other: Milliarden
+          million: Millionen
+          quadrillion:
+            one: Billiarde
+            other: Billiarden
+          thousand: Tausend
+          trillion: Billionen
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' und '
+      two_words_connector: ! ' und '
+      words_connector: ! ', '
+  time:
+    am: vormittags
+    formats:
+      default: ! '%A, %d. %B %Y, %H:%M Uhr'
+      long: ! '%A, %d. %B %Y, %H:%M Uhr'
+      short: ! '%d. %B, %H:%M Uhr'
+    pm: nachmittags
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
+  article:
+    create: Neuer Artikel
+    edit: Artikel Bearbeiten
+    author: Autor
+
+  general:
+    description: Beschreibung
+    email: E-Mail
+    find: Finden
+    industries: Branchen
+    home: Startseite
+    name: Name
+    postal_code: PLZ
+    remember_me: An mich erinnern
+    send: Senden
+    sign_in: Anmeldung
+    sign_up: Registrieren
+    step: Schritt
+    subject: Thema
+  top_menu:
+    home: Home
+    find_an_architect: Anbieter finden
+    request_for_quotation: Offerte anfordern
+    register_company: Firma eintragen
+    about: Sich informieren
+    contact_us: Kontakt
+    about_us: Über uns
+  offer_section:
+    submit_offer: Offerten anfordern!
+    get_quotes: Offerten holen!
+  add_company_page2:
+    intro: |
+      Geben Sie nun bitte einige detaillierte Informationen zu Ihrer Firma an, so wie die genaue Adresse und Kontaktdaten, damit
+      potentielle Kunden Sie einfacher finden und kontaktieren können, ein Profilbild, welches ein "Aushängeschild" Ihrer Firma sein
+      sollte (beispielsweise ein imposantes Projekt), eine kurze Beschreibung, sowie die Fachgebiete, auf die Sie sich spezialisieren und
+      wo Sie gerne Projektanfragen erhalten möchten.
+    your_address: Ihre Adressdaten
+    your_profile: Ihr Profil
+  add_company_page3:
+    intro: |
+      <p>
+      Fügen Sie nun bitte mindestens ein Profilbild, welches ein "Aushängeschild" Ihrer Firma sein
+      sollte (beispielsweise ein imposantes Projekt), sowie auf Wunsch auch weitere Bilder, die Ihr Unternehmen nach aussen
+      präsentieren sollen. Es können bis zu 20 Bilder jeder Grösse hinzugefügt werden, die Bilder werden für eine Darstellung
+      in Ihrem Firmenprofil automatisch verkleinert und in einer Galerie dargestellt.
+      </p>
+      <p>
+      Das erste hochgeladene Bild wird als Profilbild verwendet (dies können Sie später aber auch problemlos anpassen).
+      </p>
+      <p>
+      Ferner wählen Sie bitte im folgenden die Fachgebiete, auf die Sie sich spezialisieren und wo Sie gerne Projektanfragen erhalten möchten.
+      </p>
+    your_gallery: Ihre Bildergalerie
+    gallery_intro: Hier können Sie attraktive Fotos Ihrer Projekte, Werbematerial oder andere vergleichbare Bilder hochladen. Die Galerie kann bis zu 20 Bilder jeder Grösse bis 1024x768 Pixel umfassen. In Ihrem Firmenprofil werden automatisch verkleinerte Bilder dargestellt.
+    your_category: Ihre Branche
+    your_category_prompt: Bitte wählen Sie eine Branche
+    your_specialty: Ihre Spezialgebiete
+    specialty_intro: Bitte wählen Sie im folgenden die Gebiete, in denen Sie sich spezialisieren und wo Sie bevorzugt von Kunden für Projekte kontaktiert werden möchten. Es können maximal 10 Fachgebiete ausgewählt werden. Bitte drücken Sie jeweils "Enter" nach der Eingabe eines Spezialgebiets.
+    your_company_location: Ihr Firmenstandort
+    company_location_intro: Bitte wählen Sie den Standort Ihres Unternehmens, indem Sie die Markierung auf der Karte unten verschieben. Der Standort ist gleichzeitig auch die Region, aus dem Kundenanfragen an Sie weitergeleitet werden. Sie können jedoch später zusätzliche Regionen angeben.
+  add_company_page4:
+    intro: |
+      <p>
+      Wählen Sie nun eine der nachfolgenden Mitgliedschaftsoptionen. Bei der kostenlosen <b>Basismitgliedschaft</b> sind bereits zahlreiche Vorzüge enthalten, so wie
+      ein detailliertes Profil, zusätzliche Sichtbarkeit in den Suchmaschinen, die Auflistung Ihrer Firma in regionalen Suchergebnissen, und mehr. Jedoch sind Offertenanfragen
+      kostenpflichtig (je nach Budget des Projekts können Sie diese jeweils ab 29 CHF erwerben).
+      </p>
+      <p>
+      Bei der <b>Premium-Mitgliedschaft</b> gibt es eine monatliche Grundgebühr von 49.95 CHF, ohne Mindestvertragsdauer oder Kündigungsfrist. Diese bietet noch
+      einiges mehr: hervorgehobene Listings in unseren Suchergebnissen, die Möglichkeit, ein "Premium-Partner" Logo auf Ihrer Website zu platzieren, sowie Offertenanfragen
+      zu 50% reduzierten Preisen im Vergleich zu der kostenlosen Mitgliedschaft.
+      </p>
+      <p>
+      Die <b>Elite-Mitgliedschaft</b> ist unser Angebot für die Top-Unternehmen der Schweiz. Diese kostet 299.95 CHF monatlich, ist auf nur 10 Unternehmen in der ganzen
+      Schweiz begrenzt, und bietet alle Vorzüge der Premium-Mitgliedschaft und darüberhinaus ein Listing in dem Elite-Ranking, ein exklusives "Elite-Partner" Logo, sowie
+      100% kostenlose Offertenanfragen.
+      </p>
+      <p>
+      Sie können die Mitgliedschaft selbstverständlich jederzeit ändern oder beenden.
+      </p>
+    your_membership: Ihre Mitgliedschaft
+  home_page:
+    title: Die besten Anbieter der Schweiz
+    intro: |
+      Finden Sie mit wenigen Mausklicks die besten Firmen für Ihre gewünschten Aufgaben, jeweils nah an Ihrem Standort.      
+  contact_page:
+    title: Kontakt
+    intro: |
+      Sie können mit uns jederzeit mittels des untenstehenden Kontaktformulars Kontakt aufnehmen. Wir werden uns schnellstmöglich bei Ihnen melden, normalerweise innerhalb der nächsten 12-24 Stunden. Wir freuen uns auf Ihre Kontaktaufnahme!
+  about_page:
+    title: Über uns
+  jobs_page:
+    title: Jobs
+  privacy_page:
+    title: Datenschutzerklärung
+  terms_page:
+    title: AGB
+  sitemap_page:
+    title: Sitemap
+  impressum_page:
+    title: Impressum
+  hints:
+    address: "Die Domiziladdresse Ihrer Firma, die für Kontaktanfragen seitens potenzieller Kunden genutzt werden kann (Beispiel: Industriestrasse 32)"
+    city: "Ihr Standort (Beispiel: Zug)"
+    contact_person: "Der Name der Person, die wir für Projektanfragen und andere Auskünfte kontaktieren sollten. Beispiel: \"Max Mustermann\"."
+    email: Ihre E-Mail Addresse für Kontaktanfragen
+    long_description: Hier können Sie beliebige weitere Informationen zu Ihrer Firma angeben. Sie können die HTML-Tags <span>&lt;p&gt;, &lt;/p&gt;, &lt;b&gt;, &lt;br&gt;</span> zur Formatierung verwenden.
+    official_company_name: Bitte geben Sie hier den offiziellen Namen Ihrer Firma ein
+    phone: "Ihre Telefonnummer für Kontaktanfragen (Beispiel: 041-46353563)"
+    please_select_your_region: Bitte wählen Sie hier Ihren Kanton aus
+    postal_code: "Ihre Postleitzahl (Beispiel: 6300)"
+    short_description: "Beschreiben Sie hier kurz und bündig Ihre Firma in 1-2 Sätzen (Beispiel: Die Meier AG ist ein Traditionsunternehmen seit 1848 und hat in ihrer langen Geschichte Hunderte von Architekturprojekten realisiert). Sie können die HTML-Tags <span>&lt;p&gt;, &lt;/p&gt;, &lt;b&gt;, &lt;br&gt;</span> zur Formatierung verwenden."
+    website: "Ihre Webseite (Beispiel: meier-architekten.ch)"
+  company_form:
+    your_gallery: Ihre Bildergalerie
+    gallery_intro: Hier können Sie attraktive Fotos Ihrer Projekte, Werbematerial oder andere vergleichbare Bilder hochladen. Die Galerie kann bis zu 20 Bilder jeder Grösse bis 1024x768 Pixel umfassen. In Ihrem Firmenprofil werden automatisch verkleinerte Bilder dargestellt.
+    edit_company: Firma Bearbeiten
+    specialties: Spezialgebiete
+    categories: Branche
+    short_description: Kurzbeschreibung
+    long_description: Detaillierte Beschreibung
+    cover_image: Profilbild
+    websites: Website
+    phone_numbers: Telefon
+    contact_info: Kontaktdaten
+    basic_info: Basis-info
+    additional_info: Zusätzliche Informationen
+    save: sparen
+  company_show_page:
+    gallery: Bildergalerie
+    review: Bewertungen
+    specialty: Spezialgebiete
+    additional_info: Weitergehende Informationen
+    location_of: Anfahrt 
+    other_architects: Andere Architekten
+  change_password_page:
+    title: Ändern Sie Ihr Passwort
+    fields:
+      password: Neues Passwort
+      password_confirmation: Neues Passwort bestätigen
+      submit: Mein Passwort ändern
+  forgot_password_page:
+    title: Passwort vergessen?
+    fields:
+      email: E-Mail
+      submit: Senden Sie mir Anweisungen, um mein Kennwort zurückzusetzen
+  fields:
+    address: Adresse
+    city: Stadt
+    company_name: Firmenname
+    contact_person: Ansprechpartner
+    current_password: Aktuelles Passwort
+    description: Kurzbeschreibung
+    email: E-Mail
+    password: Passwort
+    password_confirmation: Passwort-Bestätigung
+    phone_number: Telefon
+    postal_code: PLZ
+    region: Kanton
+    your_name: Ihr Name
+  devise:
+    forgot_your_password: Passwort vergessen?
+    didnt_receive_confirmation_instructions: Haben Sie keine Anweisungen zur Bestätigung erhalten?
+    resend_confirmation_instructions: Erneutes Senden der Anweisungen zur Bestätigung
+    mailer:
+      reset_password_instructions:
+        instruction: Jemand hat einen Link zu Ihrem Passwort zu ändern gebeten, und Sie können dies über den Link unten tun.
+        note1: Wenn Sie nicht angefordert haben diese Bitte ignorieren Sie diese E-Mail.
+        note2: Das Passwort wird sich nicht ändern, bis Sie den obigen Link zugreifen und eine neue erstellen.
+      confirm_your_account_through_the_link_below: "Sie können Ihr Konto per E-Mail über den unten stehenden Link bestätigen:"
+  fileupload:
+    errors:
+      maxFileSize: Datei ist zu groß
+      minFileSize: Datei ist zu klein
+      acceptFileTypes: Dateityp nicht erlaubt
+      maxNumberOfFiles: Max. Anzahl an Dateien überschritten
+      uploadedBytes: Hochgeladen Bytes überschreiten Dateigröße
+      emptyResult: Leere Datei-Upload Ergebnis
+    error: Fehler
+    start: Starten
+    cancel: Stornieren
+    destroy: Löschen
+    buttons:
+      add_files: Bilder hinzufügen
+      start_upload: Upload starten
+      cancel_upload: Upload abbrechen
+      delete: Löschen
+  architect: "Architekten"
+  contact: "Kontakt aufnehmen"
+  guest: "Gast"
+  hello: "Hallo"
+  last_advice: "Letzte Ratschläge"
+  latest_news: "Neueste Infos"
+  latest_offers: Neueste Offerten
+  login: "Einloggen"
+  loginwithfacebook: "Einloggen mit Facebook"
+  logout: "Ausloggen"
+  register: "Registrieren"
+  welcome: "Willkommen"
+  searchcompany: "Firma suchen"  
+  requestoffer: "Offerte anfordern"
+  addcompany: "Firma eintragen"
+  searchdefault: "Kategorie, Region, Stichwort..."
+  search: "Suche"
+  generic_title: "Die besten Anbieter der Schweiz - Das Portal für Offerten, Firmeninfos, und mehr"
+  default_meta_tag_keywords: "Stichwort, Stichwort, Stichwort"
+  default_meta_tag_description: "Beschreibung Beschreibung Beschreibung"
+  nextstep: "Weiter"
+  previousstep: "Zurück"
+  companyname: "Firmenname"
+  companylocation: "Firmenstandort"
+  home: "Startseite"
+  contactperson: "Ansprechpartner"
+  address: "Adresse"
+  city: "Stadt"
+  phone: "Telefon"
+  email: "E-Mail"
+  website: "Website"
+  selectregion: Kanton auswählen
+  description: "Kurzbeschreibung (bis 100 Wörter)"
+  region: "Kanton"
+  longdescription: "Detaillierte Beschreibung"
+  nextstep3: "Weiter zu Schritt 3"
+  nextstep4: "Weiter zu Schritt 4"
+  previousstep1: "Zurück zu Schritt 1"
+  previousstep2: "Zurück zu Schritt 2"
+  previousstep3: "Zurück zu Schritt 3"
+  finish: "Abschliessen"
+  im_looking_for: "Ich suche"
+  register_your_company: "Ihre Firma eintragen"
+  add_company_intro: |
+    <p>
+    Hier können Sie Ihr Unternehmen zu unserem Register hinzufügen. Bitte beachten Sie, dass wir eine sehr hohe Qualität
+    in unserer Datenbank anstreben, und somit es einige wichtige Richtlinien zu beachten gibt:
+    </p>
+
+    <ul>
+      <li>Sie dürfen nur eine einzige Firma ins Register hinzufügen</li>
+      <li>Sie sollten bei Nachfrage nachweisen können, dass Sie der Inhaber bzw. berechtigt sind, z.B. mit einem aktuellen Handelsregisterauszug
+    oder einer Mail von der Firmendomain</li>
+      <li>Es darf nach der Aufnahme in das Register keine Namensänderung mehr stattfinden</li>
+    </ul>
+  how_does_it_work: "Wie funktioniert es?"
+  select_region_title: "Wählen Sie nun Ihre Region aus"
+  last_entered: Zuletzt eingetragen
+  your_region: Ihr Kanton
+  you_need_to_login_to_continue: Sie müssen sich anmelden, um fortzufahren
+  switzerland: "Schweiz"
+  writereview: 'Review schreiben'
+
+
+
+  offer:
+#    select_project_type:
+#      sweden_architect_applications: "Offerten erhalten von Anbietern in der Schweiz"
+#      choose_your_category: "Wählen Sie Ihre Kategorie"
+#      choose_your_project_type: "Wählen Sie Ihren Projekt-Typ"
+#      fill_out_your_formular: "Füllen Sie das Formular aus"
+#      we_will_find_an_architect: "Wir werden einen Anbieter für Ihr Projekt finden"
+#      you_will_get_estimates_for_free: "Sie erhalten 3-5 Offerten kostenlos"
+#      architects_in_sweden: "Die besten Anbieter der Schweiz"
+#      forward: "nach vorn"
+    select_category:
+      sweden_architect_applications: "Offerten erhalten von Anbietern in der Schweiz"
+      choose_your_category: "Wählen Sie Ihre Kategorie"
+      fill_out_your_formular: "Füllen Sie das Formular aus"
+      we_will_find_an_architect: "Wir werden einen Anbieter für Ihr Projekt finden"
+      you_will_get_estimates_for_free: "Sie erhalten 3-5 Offerten kostenlos"
+      architects_in_sweden: "Die besten Anbieter der Schweiz"
+      forward: "nach vorn"
+    new:
+      your_project: Ihr Projekt
+      select_the_details_of_the_project: Wählen Sie Details zu dem Projekt aus
+      land_available: Grundstück vorhanden
+      button_yes: Ja
+      button_no: Nein
+      size_in_square_meters: Größe in Quadratmetern
+      number_of_floors: Anzahl Stockwerke
+      number_of_rooms: Anzahl Zimmer
+      number_of_bathrooms: Anzahl Badezimmer
+      label_start: Startdatum
+      label_end: Endedatum
+      completing_project: Projekt Abschliessen
+      what_is_your_estimated_budget: Was ist Ihr Budget?
+      period_in_which_they_want_to_build: In welchem zeitraum möchten sie bauen?
+      what_to_consider: "Was ist zu beachten?"
+      button_submit: Anfrage Einreichen
+    created:
+      title: Angebot Unterbreitet
+      text: Vielen Dank, wir haben Ihre Anfrage erhalten. Wir werden passende Architekten aussuchen, die Ihnen innerhalb von 48-72 Stunden Offerten zusenden oder mit Ihnen diesbezüglich Kontakt aufnehmen werden.
+
+    notices:
+      your_project_has_been_submitted: Ihr Projekt wurde eingereicht
+      project_type_not_found: Projekttyp nicht gefunden
+
+  company:
+    index:
+      title: "Architekten"
+      
+  jvalidate:
+    required: "Diese Eingabe ist erforderlich."
+    remote: "Bitte beheben Sie dieses Feld."
+    email: "Bitte geben Sie eine gültige E-Mail-Adresse."
+    url: "Bitte geben Sie eine gültige URL."
+    date: "Bitte geben Sie ein gültiges Datum."
+    dateISO: "Bitte geben Sie ein gültiges Datum (ISO)."
+    number: "Bitte geben Sie eine gültige Nummer."
+    digits: "Bitte geben Sie nur Ziffern."
+    creditcard: "Bitte geben Sie eine gültige Kreditkartennummer."
+    equalTo: "Bitte geben Sie den gleichen Wert wieder."
+    accept: "Bitte geben Sie einen Wert mit einer gültigen Erweiterung."
+    maxlength: "Bitte geben Sie nicht mehr als {0} Zeichen."
+    minlength: "Bitte geben Sie mindestens {0} Zeichen."
+    rangelength: "Bitte geben Sie einen Wert zwischen {0} und {1} Zeichen lang sein."
+    range: "Bitte geben Sie einen Wert zwischen {0} und {1}."
+    max: "Bitte geben Sie einen Wert kleiner oder gleich {0}."
+    min: "Bitte geben Sie einen Wert größer als oder gleich {0}."
+ 

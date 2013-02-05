@@ -1,0 +1,13 @@
+<h1>Articles</h1>
+<% if can? :create, Article %>
+    <%= link_to t('article.create'), new_admin_article_path %>
+<% end %>
+
+<section>
+	<% @articles.each do |article| %>
+	    <article>
+	        <%= render "article", {:action => :index, :article => article } %>
+	    </article>
+	<% end %>
+</section>
+<%= paginate @articles %>

@@ -1,0 +1,19 @@
+// Place all the styles related to the article controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#container .column.article {
+	.left {
+		width: 450px;
+		float: left;
+		margin-right: 10px;
+	}
+	.right {
+		width: 450px;
+		float: left;
+		margin-left: 10px;
+	}
+	p img {
+		margin-right: 10px;
+    	width: 350px;
+    }
+}

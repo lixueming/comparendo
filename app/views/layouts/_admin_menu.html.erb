@@ -1,0 +1,11 @@
+<div id="topmenucontainer">
+  <div id="topmenu">
+    <%= tabs_tag :open_tabs => {:class => "tabrow"} do |tab| %>
+      <%= tab.home t('top_menu.find_an_architect'), root_path %>
+      <%= tab.offer t('top_menu.request_for_quotation'), 'offerte-anfordern' %>
+      <%= tab.company t('top_menu.register_company'), company_add_path %>
+      <%= tab.article t('top_menu.about'), infos_path %>
+      <%= tab.contact_us t('top_menu.contact_us'), '/kontakt' %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,233 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.tab-container').easytabs();
+    });
+  </script>
+<% end %>
+<!-------------------------------------->
+<% unless response.status==404 %>
+    <%= content_for :banner do %>
+      <div id="banner-wrapper">
+        <div id="banner-wrapper-inner">
+
+            <div id="banner-left-wrapper">
+                <img src="/assets/old-lady.png" width="251" height="353" />
+                  <p style="margin-top:-45px;">“Comparendo hat für uns sehr schnell mehrere attraktive Offerten gefunden, vielen Dank nochmals.” <br />
+      <em>~Regina Stauffenbach, SZ</em></p>
+              </div>
+              <div id="banner-right-wrapper">
+                <h1>Finden Sie mit uns die besten<br />Anbieter für Ihr Projekt. </h1>
+                  <div id="banner-list-wrapper">
+                    <ul>
+                        <li>Auf Knopfdruck 3-5 qualitativ hochwertige Offerten</li>
+                        <li>Wir suchen für Sie unter den besten Profis Ihrer Region</li>
+                        <li>Kompetente und kostenfreie Beratung inklusive</li>
+                      </ul>
+                  </div>
+                  <div class="clr"></div>
+                <%= button_to "Jetzt Starten", new_offer_path, :id => "start-btn", :class => "jetztbutton", :method => :get %>
+              </div>
+          </div>
+      </div>
+    <% end %>
+<% end %>
+<!-------------------------------------      -->
+<div id="main-left-wrapper">
+  <% unless response.status==404 %>
+  <!--///////////////////////////-->
+  <h2><%= t('home_page.title') %></h2>
+  <p style='padding-right: 20px;'><%= t('home_page.intro') %></p>
+
+  <br />
+
+  <div id="searchtable">
+    <%= form_tag company_index_url, :method => :get do %>
+      <%= t(:im_looking_for) %>
+        <%= text_field_tag "q", "Solaranlagen",
+                           {:id=>"industry", :class=>"gray ac_input clearme",
+                            :data => {:autocomplete_source=>autocomplete_category_subcategory_path}} %>
+
+
+        in
+        <%= text_field_tag "region", "Zürich",
+                           {:id=>"area", :class=>"gray autocomplete clearme",
+                            :data => {:autocomplete_source=>autocomplete_region_city_path}} %>
+
+
+        <input id="search" value="<%= t('general.find') %>" type="submit" class="button">
+    <% end %>
+  </div>
+
+  <br />
+
+  <br />
+
+  <div id="map-switzerland" style="z-index:1;">
+    <ul class="switzerland">
+      <% if !Country.where(:name => 'Switzerland').first.blank? %>
+        <% Country.where(:name => 'Switzerland').first.regions.order(:name).each_with_index do |r,i| %>
+          <li class="ch<%= i+1 %>">
+            <a href="javascript:mapClick('<%= r.name %>')"><%= r.name %></a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- -->
+  <div class="clr"></div>
+
+  <h2>Top 5 Architekten in Bern:</h2>
+  <div id="top-5-wrapper">
+    <div class="company-container">
+      <div class="thumbnail-container">
+          thumb
+      </div>
+      <div class="company-details-container">
+        <div class="company-name-container">
+            <p class="company-name">Phalt Architekten AG</p>
+          </div>
+          <div class="company-rating-container">
+            <div class="star readonly" score="4"></div>
+          </div>
+      </div>
+      <input name="" type="button" value="Offerte Einholen" class="offerte-btn" />
+
+     <div id="tab-container2" class='tab-container'>
+       <ul class='etabs'>
+         <li class='tab'><a href="#tabs1-intro1">Intro</a></li>
+         <li class='tab'><a href="#tabs1-kontakt1">Kontakt</a></li>
+         <li class='tab'><a href="#tabs1-katalog1">Katalog</a></li>
+         <li class='tab'><a href="#tabs1-abbildungen1">Abbildungen</a></li>
+         <li class='tab'><a href="#tabs1-referenzen1">Referenzen</a></li>
+         <li class='tab'><a href="#tabs1-news1">News</a></li>
+       </ul>
+       <div class='panel-container'>
+        <div id="tabs1-intro1">
+         <p>Finden Sie mit wenigen Mausklicks die passenden Anbieter fir Ihr Projekt.</p>
+        </div>
+         <div id="tabs1-kontakt1">
+         <p>Finden Sie.</p>
+        </div>
+        <div id="tabs1-katalog1">
+        <p>die passenden Anbieter fir Ihr Projekt.</p>
+        </div>
+        <div id="tabs1-abbildungen1">
+        <p>Anbieter fir Ihr Projekt.</p>
+        </div>
+        <div id="tabs1-referenzen1">
+        <p>Finden Sie mit wenigen Mausklicks die passenden</p>
+        </div>
+        <div id="tabs1-news1">
+        <p>Finden Sie mit wenigen</p>
+        </div>
+       </div>
+      </div>
+
+      <div class="clr"></div>
+      <div class="company-tags-container">
+        <div class="company-tags">
+            <a href="#">sample tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">sample of a very long tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">another sample tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">again, yet another sample tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">again, yet another sample tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">sample tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">another sample tag</a>
+          </div>
+        <div class="company-tags">
+            <a href="#">sample</a>
+          </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <!-- -->
+<% else %>
+  <div id="banner-wrapper">
+    <div id="err-wrapper">
+      <h1> Seite nicht gefunden </h1>
+    </div>
+  </div>
+<% end %>
+  <!--////////////////////////////-->
+</div>
+
+
+<div id="main-right-wrapper">
+
+
+  <h3><%= t(:how_does_it_work) %></h3>
+  <ul>
+    <li class="one-bul"><a href="#">Kurzes Formular ausfüllen</a></li>
+    <li class="two-bul"><a href="#">Abschicken</a></li>
+    <li class="three-bul"><a href="#">3 Offerten erhalten</a></li>
+  </ul>
+   
+  <div class="clr"><br><br><br></div>
+
+  <%= render "layouts/latest_news"%>
+
+  <div class="clr"><br><br><br></div>  
+
+  <h3>Top-Anbieter:</h3>
+  <ul>
+    <li><a href="#">Geprüft durch uns</a></li>
+    <li><a href="#">Hintergrund-Check</a></li>
+    <li><a href="#">Interview</a></li>
+  </ul>
+
+</div>
+<div class="clr"></div>
+<script>
+
+  $('#map-switzerland').cssMap({
+    'size' : 660,
+    'cities' : true,
+    'searchUrl' : 'search',
+    'loadingText' : 'Lade...',
+    'onClick': function(e) {
+
+    }
+
+  });
+
+</script>
+
+
+<script>
+
+  $('#industry').bind('keypress', function(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if(code == 13) {
+      autocomplete();
+    }
+  });
+
+
+  window.onload = function() {
+
+    var data = "agenturen akupunktur alarmanlagen altersheime antiquitätenhändler anwälte anwaltsbüros apotheken architekten astrologen atemtherapien attraktionen aufzüge augenärzte ausbilder ausbildungen ausbildungszentren ausflüge auskünfte ausstellungen austatter badezimmer bäckereien bäder bahnhöfe banken bars baugerüste bauleitungen baumaschinen baustoffe bauunternehmen bauunternehmer bekleidung beleuchtungen berater beratungen bergführer berggasthöfe berghütten bestattungsinstitute bettwaren bibliotheken bildhaür blumenhandlungen blumenläden bodenverleger böden boutiqün braüreien brennereien brennstoffe brillengeschäfte buchhalter buchhandlungen cafes campingplätze chinesische-medizin chiropraktiker chirurgen clubs coaches coiffeure dachdecker dächer dancings dekorateure delikatessenhändler dentalhygieniker dermatologen designer detektive dichtungen dienstleistungen diskotheken drogerien druckereien einkaufszentren einzelhändler eisenwarenhandlungen elektriker elektroinstallateure erbschaftsberater  erfinder ergotherapeutinnen ernährungsberater events exportfirmen fabriken fahrräder fahrschulen fassaden fenster ferien ferienhäuser ferienlager ferienwohnungen fernsehsender feste festivals feuchtigkeiten finanzberater fitnesszentren flughäfen flugplätze flugschulen flugzeuge fotografen fotokopien fraünärzte freizeit freizeitzentren fusspfleger galerien galvanoplastiker garagen gartenbaür gartencenter gartenpfleger gasthöfe geigenbaür geldanlagen geologen  geometer geschäfte geschenke geschenkläden gesellschaften getränke gewerkschaften gipsergeschäfte glasereien golfplätze grafiker graveure grosshändler gutachten häfen handelskammern handwerker haushaltsgeräte haustechniken hausverwaltungen heimwerker heizungsinstallateure herzspezialisten hifihändler hörgeräte homöopathen hotels hubschrauber hypotheken immobilienmakler importfirmen informatiker ingenieure innenarchitekten innenausbau inneneinrichtungen institute institutionen instrumente isolierungen journalisten kabarette  kabel käsereien kaffeemaschinen karosserien kasinos kassen kebabs kieferorthopäden kinderärzte kindergärten kinderhorte kinderkrippen kinos kioske klimaanlagen kliniken kneipen konditoreien kosmetikartikel kräuterhandlungen krankenkassen kreuzfahrten küchen künste künstler kunstgegenstände kunstmaler kuriere lacke läden lagerhäuser landmaschinen landschaftsarchitekten lebensmittelläden lederwaren lieferungen limousinen logopäden lottos ludotheken lüftungen lymphdrainage makler maler-anstreicher manager marken massagen massagesalons maurer mechaniker medikamente mercerien messen metallbauten metzgereien minigolf modeschöpfer möbel möbellager molkereien motels motorradfachschulen motorräder münzsammler multimedien museen musiker musikschulen nägel nahrungsmittel naturheilärzte naturheilkunde night-clubs notare occasionen öffentlichen-schreiber ofensetzer  optiker orchester organisationen orthopädisten osteopathen pannendienste parfümerien parkette parkplätze parteien partnervermittlungen pc-shops pfeifen pferde pflanzen pflege physiotherapeuten piercings pizzerien plattenleger polster praxen privatschulen produkte prothesen provider psychiater psychologen psychotherapeuten pubs radiosender radio-tv-läden rechtsberater redakteure reflexologen regionalprodukte registrierkassen reifen reinigungen reinigungsprodukte reinigungsunternehmen reiseandenken reisebüros reisen reitschulen relais renovationen renten reparaturen restaurants röhren sägewerke sammler sanierungen sanitäranlagen sattler sauglingsschwestern saunas schauspiele schauspieler scheidungen schiessstände schiffe schlachthäuser schlafstellen schleifer schlösser schlossereien schlüssel schmuckläden schmuckstücke schneidereien schönheitsinstitute schönheitspflegerinnen schokoladen schornsteinfeger schreibwarenhändler schreinereien schuhe schuhmacher schulen schuster schwimmbäder scooters segelschulen sexologen sexshops shiatsupraktiker sicherheitsagenturen skilifte skistationen software-fachleute software-händler solarien sophrologen soziologen spas spengler spenglereien spielleiter spielsäle spielzeuge spitäler sportarten sportartikel sportläden sportzentren sprachschulen steinhaür stellen stellenvermittlungsbüros steürn stiftungen storen studios supervisoren tätowierer tankrevisionen tankstellen tanzschulen tauchschulen taxis tea-room telefone telekommunikationen teppiche textilien theater therapeuten therapien thermalbäder tierärzte tiere tierheime tierzüchter  tischler tonstudios tourismusagenturen traktoren transportunternehmen treuhänder türen übersetzer uhren uhrmacher umzüge universitäten unterhaltungen unterkünfte unternehmen unterwäsche veranden veranstaltungen verbände vereine verkehrsunternehmen verlage verleger vermietungen verpackungen versicherungen verwaltungen video-clubs videospiele videotheken vorhänge wärmepumpen wäschereien waffenläden waschmaschinen webdesigner weinbaürn weine weinkellerreinen wellnesszentren werbeagenturen werbeartikel werbefachleute werbungsagenturen werkstätten werkzeuge werkzeugmaschinen wetterstationen whirlpools winzer  wohnungen wohnungsverwaltungen wohnwagen wurstwaren yogakurse zäune zahnersätze zahnmediziner zeitungen zifferblätter zigarren zimmereien zivilingenieure zoohandlungen zoos zubehöre".split(' ');
+
+    //$('#industry').focus();
+    $('#industry').autocomplete(data);
+
+  };
+
+</script>
+
+
+

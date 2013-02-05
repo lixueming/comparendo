@@ -1,0 +1,82 @@
+<% content_for :head do %>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<% end %>
+<% content_for :title, t(:addcompany) %>
+
+<div id="main-left-wrapper">
+
+  <h2><%= t(:addcompany) %> - <%= t('general.step') %> 3</h2>
+
+  <%= t('add_company_page3.intro').html_safe %>
+
+  <br>
+
+  <h2><%= t('add_company_page3.your_gallery') %></h2>
+
+  <p><%= t('add_company_page3.gallery_intro') %></p>
+
+  <br>
+
+  <%= form_for [@company, Image.new], :format => :json, :html => { :multipart => true, :id => "fileupload" } do |f| %>
+    <%= render :partial => 'layouts/image_form' %>
+  <% end %>
+
+  <%= render :partial => "layouts/hline" %>
+
+  <%= form_for @company, :url => company_add3_url(:id => @company.id),
+                         :html => {:name => 'company_add3_form', :id => 'company_add3_form'} do |f| %>
+
+
+
+    <h2><%= t('add_company_page3.your_category') %></h2>
+    <div class="clearfix control-group">
+      <%= select_tag("category", options_from_collection_for_select(Category.all, "id", "name"), :prompt => t('add_company_page3.your_category_prompt'), "data-url" => subcategories_path )%>
+      <div id="subcategory-section"></div>
+      <%= f.label t('company_form.categories') %>
+      <% subcategories = @company.subcategories.map(&:name).join(",") %>
+      <%= text_field_tag "company[subcategories]", subcategories, {:class => 'tagsinputtable tooltippable'} %>
+    </div>
+    <%= render :partial => "layouts/hline" %>
+
+    <h2><%= t('add_company_page3.your_specialty') %></h2>
+
+    <p><%= t('add_company_page3.specialty_intro') %></p>
+
+    <div class="clearfix control-group">
+      <%= f.label t('company_form.specialties') %>
+      <% specialties = @company.tags.map(&:name).join(",") %>
+      <%= text_field_tag "company[specialties]", specialties, {:class => 'tagsinputtable tooltippable',
+      :data => {:autocomplete_source=>autocomplete_company_specialties_path}} %>
+    </div>
+
+    <br />
+
+    <%= render :partial => "layouts/hline" %>
+
+    <h2><%= t('add_company_page3.your_company_location') %></h2>
+
+    <p><%= t('add_company_page3.company_location_intro') %></p>
+
+    <div id="map_canvas" style="width: 600px; height: 400px;"></div>
+
+    <div class="clearfix">
+      <div class="control-group" style="float: left; width: 40%;">
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude , :title => t('hints.website'),:data => {:placement=>'right', :trigger => "focus"}, :class => "add_tooltip" %>
+      </div>
+
+      <div class="control-group" style="float: left; width: 40%;">
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude , :title => t('hints.website'),:data => {:placement=>'right', :trigger => "focus"}, :class => "add_tooltip" %>
+      </div>
+    </div>
+
+    <div class="pull-left"><%= link_to t(:previousstep2), company_add2_url(:id => @company.id), :class => 'btn' %></div>
+    <div class="pull-right"><%= submit_tag t(:nextstep4), :class => 'btn' %></div>
+
+  <% end %>
+
+</div>
+
+<%= render :partial => 'add_company_sidebar' %>
+<div class="clr"></div>

@@ -1,0 +1,31 @@
+ <% content_for :head do %>
+     <%= javascript_include_tag "jquery.jeditable.mini" %>
+     <%= javascript_include_tag "article" %>
+<%end%>
+<h2 class="editable_text" id="article_title"><%=article.title %></h2>
+<p>
+    <% if article.has_cover_image? %>
+        <%= action == :index ? image_tag(article.thumb_image.url) : image_tag(article.cover_image.url) %>
+    <% end %>
+    <%= action == :index ? raw(article.short_description) : raw(article.body) %>
+</p>
+<div><%= t('article.author') %>:
+    <%= link_to article.author.name, nil %>
+</div>
+<% unless article.tags.blank? %>
+    <div>Tags:
+    	<% tags = [] %>
+        <% article.tags.split(",").each do |tag| %>
+            <% tags << link_to(tag, nil) %>
+        <% end %>
+        <%= tags.join(", ").html_safe %>
+    </div>
+<% end %>
+<% if can? :update, article %>
+    <%= link_to "Edit", edit_admin_article_path(article) %>
+<% end %>
+<% if can? :destroy, article %>
+    <%= form_for([:admin, article], :method => 'delete') do |f| %>
+        <%= f.submit('delete') %>
+    <% end %>
+<% end %>

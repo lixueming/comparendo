@@ -1,0 +1,62 @@
+.timeframe {
+	input.calendar {
+		width: 70px;
+	}
+	label {
+		background-color: #FFFFFF;
+	    display: block;
+	    margin: -15px 0 0  -5px;
+	    width: 70px;
+	}
+	div label {
+		margin: 0 0 0 20px;
+		display: inline;
+	}
+}
+
+.budget {
+    label {
+		background-color: #FFFFFF;
+	    display: block;
+	    margin: -15px 0 0  -5px;
+	    width: 45px;
+	}
+	input {
+		width: 70px;
+	}
+	input:first-of-type {
+		margin-left: 15px;
+	}
+	input:last-of-type {
+		width: 30px;
+	}
+}
+
+.border-section {
+	border: 1px solid #EEEEEE;
+    margin-top: 15px;
+    padding: 5px;
+    width: 375px;	
+}
+
+#location-toggle-button {
+	margin: 10px 0 0 10px;
+	span {
+		font-size: 12px;
+	}
+}
+select#region {
+	margin: 15px 0 10px 10px;
+}
+
+.ui-datepicker{ z-index: 9999 !important;}
+
+fieldset {
+	label {
+		margin-left: 5px;
+	}
+}
+
+.margintop50px {
+	margin-top: 50px;
+}

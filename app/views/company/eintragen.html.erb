@@ -1,0 +1,70 @@
+<% content_for :title, t(:addcompany) %>
+
+<div id="main-left-wrapper">
+	<h2><%= t(:addcompany) %></h2>
+  <p><%= t(:add_company_intro).html_safe %></p>
+	<br>
+
+  <h2><%= t(:register_your_company) %></h2>
+
+  <%= form_for @company, :url => (@company.id) ? company_add_url(:id => @company.id) : company_add_url,
+               :html => {:name => 'company_add_form', :id => 'company_add_form',
+                         :class => 'remember-cookie'} do |f| %>
+
+    <div class="clearfix">
+      <label class="form-label" for="company_name"><%= t(:companyname) %></label>
+      <div class="control-group">
+        <%= f.text_field :name, {:class => 'form-input tooltippable', :title => t('hints.official_company_name'),
+                                 'original-name' => @company.name,:data => {:placement=>'right', :trigger => "focus"}, :class => "add_tooltip"} %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label" for="company_region_id"><%= t(:your_region) %></label>
+      <div class="control-group">
+        <select id="company_region_id" name="company[region_id]" class="tooltippable add_tooltip" title="<%= t('hints.please_select_your_region') %>" data-placement="right">
+          <option value="0"><%= t(:selectregion) %></option>
+          <% @regions.each do |region| %>
+            <option value="<%= region.id %>" <%= (@company.region_id == region.id) ? 'selected="selected"' : '' %>>
+              <%= region.name %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div><%= submit_tag t(:nextstep), :class => 'btn' %></div>
+
+  <% end %>
+</div>
+
+<div id="main-right-wrapper">
+  <h3><%= t(:how_does_it_work) %></h3>
+  <ul>
+    <li>
+      <a href="#">Einmal ausfüllen</a>
+    </li>
+    <li>
+      <a href="#">Schnell 3 Offerten erhalten</a>
+    </li>
+    <li>
+      <a href="#">Kostenlos</a>
+    </li>
+    <li>
+      <a href="#">Unverbindlich</a>
+    </li>
+    <li>
+      <a href="#">Von den besten Architekten in Ihrer Umgebung</a>
+    </li>
+  </ul>
+   
+  <div class="clr"><br><br><br></div>
+
+  <%= render "layouts/latest_news"%>
+
+  <div class="clr"><br><br><br></div>  
+
+  <%= render :partial => 'add_company_sidebar' %>
+
+</div>
+<div class="clr"></div>

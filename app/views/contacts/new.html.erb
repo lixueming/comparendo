@@ -1,0 +1,47 @@
+<h1><%= t('contact_page.title') %></h1>
+
+<!--
+<div class = "navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <%= link_to("Home",root_url,:class => "brand") %>
+      <span class="divider"> > </span>
+      <%= link_to("kontakt",kontakt_url,:class => "brand") %>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="column leftcolumn">
+  <p><%= t('contact_page.intro') %></p>
+
+  <%= render :partial => 'layouts/errors_and_notices' %>
+
+  <%= form_tag "/kontaktmail", :id => 'contact_form', :class => 'auto_validation_form' do  %>
+    <div class="clearfix">
+      <label for="message_name"><%= t('general.name') %></label>
+      <input id="message_name" name="message[name]" type="text" />
+    </div>
+    <div class="clearfix">
+      <label for="message_email"><%= t('general.email') %></label>
+      <input id="message_email" name="message[email]" type="text" />
+    </div>
+    <div class="clearfix">
+      <label for="message_subject"><%= t('general.subject') %></label>
+        <input id="message_subject" name="message[subject]" type="text" />
+    </div>
+    <div class="clearfix">
+      <label for="message_body"><%= t('general.description') %></label>
+      <textarea id="message_body" name="message[body]" cols="30" rows="10"></textarea>
+    </div>
+    <div class="clearfix">
+      <%= submit_tag t('general.send') %>
+    </div>
+  <% end %>
+</div>
+
+<div class="column rightcolumn">
+
+
+
+</div>

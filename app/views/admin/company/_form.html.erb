@@ -1,0 +1,145 @@
+<!--
+TODO:
+- handle multiple phone numbers
+- handle multiple websites
+- might want to set thumbnail arbitrarily
+-->
+
+<% content_for :head do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.tags').tagsInput();
+
+            $('#add-image').live('change', function() {
+                $("#new_image").ajaxSubmit({
+                    success: function (data) {
+                        if (data['success']) {
+                            window.location = '<%= request.fullpath %>';
+                        }
+                    }
+                });
+            });
+
+            $('.edit_image').submit(function(event) {
+                event.preventDefault();
+                $(this).ajaxSubmit({
+                    success: function (data) {
+                        if (data['success']) {
+                            window.location = '<%= request.fullpath %>';
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+<% end %>
+
+<div class="left-panel">
+    <% if @company.id %>
+        <%= link_to 'Show company page', url_for(@company) %>
+    <% end %>
+
+    <%= form_for(@company, :url => {:action => action}) do |f| %>
+        <table>
+            <tr>
+                <td><label>City</label></td>
+                <td>
+                    <select id="company_city_id" name="company[city_id]">
+                        <% @cities.each do |city| %>
+                            <option value="<%= city.id %>"><%= city.name %></option>
+                        <% end %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Name</label></td>
+                <td><%= f.text_field(:name) %></td>
+            </tr>
+            <tr>
+                <td><label>Cover Image</label></td>
+                <td>
+                    <%= image_tag @company.cover_image.thumb('100x100').url if @company.cover_image_uid %>
+                    <br />
+                    <%= f.file_field :cover_image %>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><%= f.text_field(:email) %></td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><%= f.text_area(:address, {:rows => 5}) %></td>
+            </tr>
+            <tr>
+                <td><label>Phone Numbers</label></td>
+                <td>
+                    <% unless @company.phone_numbers.nil? %>
+                        <% @company.phone_numbers.each do |phone_number| %>
+                            <input class="company_phone_number" name="company[phone_numbers][]" type="text" value="<%= phone_number %>" /><br />
+                        <% end %>
+                    <% end %>
+
+                    <% if @company.phone_numbers.nil? or @company.phone_numbers.length == 0  %>
+                        <input class="company_phone_number" name="company[phone_numbers][]" type="text" value="" /><br />
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Websites</label></td>
+                <td>
+                    <% unless @company.websites.nil? %>
+                        <% @company.websites.each do |website| %>
+                            <input class="company_website" name="company[websites][]" type="text" value="<%= website %>" /><br />
+                        <% end %>
+                    <% end %>
+
+                    <% if @company.websites.nil? or @company.websites.length == 0 %>
+                        <input class="company_website" name="company[websites][]" type="text" /><br />
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Description</label></td>
+                <td><%= f.text_area(:description, {:rows => 5, :class => "ckeditor"}) %></td>
+            </tr>
+            <tr>
+                <td><label>Additional Info</label></td>
+                <td><%= f.text_area(:additional_info, {:rows => 5}) %></td>
+            </tr>
+            <tr>
+                <td><label>Specialties</label></td>
+                <td><%= f.text_field(:specialties, {:class => 'tags'}) %></td>
+            </tr>
+            <tr>
+                <td />
+                <td>
+                    <%= f.submit('submit') %>
+                </td>
+            </tr>
+        </table>
+    <% end %>
+</div>
+
+<% if @company.id %>
+    <div class="right-panel">
+        <div class="side-bar">
+            <div class="title">Images</div>
+            <div id="company-images">
+                <% @company.images.each do |image| %>
+                    <div style="display: inline-block;">
+                        <%= image_tag image.image.thumb('100x100').url if image.image_uid %>
+                        <%= form_for [@company, image], {:method => :delete} do |f| %>
+                            <%= f.submit 'delete' %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+            <br />
+
+            <%= form_for [@company, Image.new], :html => {:multipart => true} do |f| %>
+                Add Image <%= f.file_field :image, :id => 'add-image' %>
+            <% end %>
+        </div>
+    </div>
+<% end %>

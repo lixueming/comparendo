@@ -1,0 +1,135 @@
+<% content_for :title, t(:addcompany) %>
+
+<div id="main-left-wrapper">
+
+	<h2><%= t(:addcompany) %> - <%= t('general.step') %> 2</h2>
+	<p><%= t('add_company_page2.intro') %></p>
+
+	<br />
+
+  <h2><%= t('add_company_page2.your_address') %></h2>
+
+  <%= form_for @company, :url => company_add2_url(:id => @company.id),
+               :html => {:name => 'company_add2_form', :id => 'company_add2_form', :class => 'remember-cookie'} do |f| %>
+
+    <input type="hidden" name="id" value="<%= @company.id %>">
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :region_id %>
+    <div class="clearfix">
+      <label class="form-label" for="company_contact_person"><%= t(:contactperson) %></label>
+      <div class="control-group">
+        <%= f.text_field :contact_person, :class => 'form-input tooltippable', :title => t('hints.contact_person'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip" %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:address) %></label>
+      <div class="control-group">
+        <%= f.text_field :address, :class => 'form-input tooltippable', :title => t('hints.address'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip" %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t('general.postal_code') %></label>
+      <div class="control-group">
+        <%= f.text_field :postal_code, :class => 'form-input tooltippable', :title => t('hints.postal_code'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip" %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:city) %></label>
+      <div class="control-group">
+        <% options = {} %>
+        <% options[:region_id] = @company.region.id if @company.region %>
+        <%= f.text_field :city, :class => 'form-input tooltippable autocomplete',
+                         :title => t('hints.city'),
+                         'source-url' => name_autocomplete_cities_url(options),
+                         :value => (@company.city) ? @company.city.name : '',
+                         :data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip" %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:phone) %></label>
+      <div class="control-group">
+        <% unless @company.phone_numbers.nil? %>
+          <% @company.phone_numbers.each do |phone_number| %>
+            <div class="control-group">
+              <input class="company_phone_number tooltippable" name="company[phone_numbers][]"
+                     title="<%= t('hints.phone') %>"
+                     type="text" value="<%= phone_number %>" data-placement="right"/>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @company.phone_numbers.nil? or @company.phone_numbers.length == 0  %>
+          <div class="control-group">
+            <input class="company_phone_number tooltippable add_tooltip" name="company[phone_numbers][]" type="text"
+                   title="<%= t('hints.phone') %>"
+                   value="" data-placement="right" data-trigger='focus'/>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:email) %></label>
+      <div class="control-group">
+        <%= f.text_field :email, :class => 'form-input tooltippable', :title => t('hints.email') ,:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip"%>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:website) %></label>
+      <% unless @company.websites.nil? %>
+        <% @company.websites.each do |website| %>
+          <div class="control-group">
+            <input class="company_website tooltippable add_tooltip" name="company[websites][]" type="text"
+                   title="<%= t('hints.website') %>"
+                   value="<%= website %>" data-placement="right" data-trigger='focus'/>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if @company.websites.nil? or @company.websites.length == 0 %>
+        <div class="control-group">
+          <input class="company_website tooltippable add_tooltip" name="company[websites][]" type="text"
+                 title="<%= t('hints.website') %>" data-placement="right" data-trigger='focus'/>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render :partial => "layouts/hline" %>
+
+    <h2><%= t('add_company_page2.your_profile') %></h2>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:description) %></label>
+      <div class="control-group">
+        <%= f.text_area :description, :class => 'formdescription form-input tooltippable', :title => t('hints.short_description'),:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip"%>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="clearfix">
+      <label class="form-label"><%= t(:longdescription) %></label>
+      <div class="control-group">
+        <%= f.text_area :long_description, :class => 'formlongdescription form-input tooltippable',
+                        :title => t('hints.long_description') ,:data => {:placement=>'right', :trigger => 'focus'}, :class => "add_tooltip"%>
+      </div>
+    </div>
+
+    <%= render :partial => "layouts/hline" %>
+
+    <br /><br />
+
+    <div class="pull-left">
+      <%= link_to t(:previousstep1), company_add_url(:id => @company.id), :class => 'btn' %>
+    </div>
+    <div class="pull-right"><%= submit_tag t(:nextstep3), :class => 'btn' %></div>
+  <% end %>
+</div>
+<%= render :partial => 'add_company_sidebar' %>
+
+<div class="clr"></div>

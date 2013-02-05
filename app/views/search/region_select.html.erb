@@ -1,0 +1,63 @@
+<div id="main-left-wrapper">
+  <h2><%= t(:select_region_title) %></h2>
+	<div id="map-switzerland" style="z-index:1;">
+		<ul class="switzerland">
+		  <% Country.where(:name => 'Switzerland').first.regions.order(:name).each_with_index do |r,i| %>
+		    <li class="ch<%= i+1 %>">
+		      <a href="javascript:goToQuoteDetailsPage('<%= r.id %>')"><%= r.name %></a>
+		    </li>
+		  <% end %>
+		  
+		</ul>
+	</div>
+
+</div>
+
+<div id="main-right-wrapper">
+  <h3><%= t(:how_does_it_work) %></h3>
+  <ul>
+    <li class="one-bul"><a href="#">Kurzes Formulier</a></li>
+    <li class="two-bul"><a href="#">Agschichen</a></li>
+    <li class="three-bul"><a href="#">3 offerten eikelten</a></li>
+  </ul>
+
+  <div class="clr"><br><br><br></div>
+
+  <%= render "layouts/latest_news"%>
+
+  <div class="clr"><br><br><br></div>
+
+  <h3>Top-Anbieter:</h3>
+  <ul>
+    <li><a href="#">Geprüft dursch uns</a></li>
+    <li><a href="#">Hintergrund-chech</a></li>
+    <li><a href="#">Interview</a></li>
+  </ul>
+
+</div>
+
+<%= form_tag(quote_details_path, id: "quote-details-params") do %>
+  <%= hidden_field_tag "subcategory_id", @subcategory.id %>
+  <%= hidden_field_tag "region_id" %>
+<% end %>
+
+<div class="clr"></div>
+
+<script>
+  $('#map-switzerland').cssMap({
+    'size' : 660,
+    'cities' : true,
+    'searchUrl' : 'search',
+    'loadingText' : 'Lade...',
+    'onClick': function(e) {
+
+    }
+
+  });
+
+  function goToQuoteDetailsPage(region_id) {
+  	var form = $("#quote-details-params");
+    form.find("input[name='region_id']").val(region_id)
+    form.submit();
+	}
+</script>

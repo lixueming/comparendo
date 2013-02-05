@@ -1,0 +1,32 @@
+<h2><%= t('general.sign_up') %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),
+             :html => {:id => 'user_signup_form', :class => 'new_user auto_validation_form'}) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="clearfix">
+    <%= f.label t('fields.your_name') %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="clearfix">
+    <%= f.label t('fields.email') %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="clearfix">
+    <%= f.label t('fields.password') %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="clearfix">
+    <%= f.label t('fields.password_confirmation') %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="clearfix">
+    <%= f.submit t('general.sign_up') %>
+  </div>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

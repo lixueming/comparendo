@@ -1,0 +1,31 @@
+<div class="column leftcolumn">
+	<h2><%= @article.title %></h2>
+	<p>
+	    <%= image_tag @article.cover_image.url if @article.has_cover_image? %>
+	    <%= raw @article.body %>
+	</p>
+	<% unless @article.tags.blank? %>
+		<div>Tags:
+			<% tags = [] %>
+		    <% @article.tags.split(",").each do |tag| %>
+		        <% tags << link_to(tag, nil) %>
+		    <% end %>
+		    <%= tags.join(", ").html_safe %>
+		</div>
+	<% end %>
+	<div class="author"><%= t('article.author') %>:
+		<%= link_to @article.author.name, nil %>
+	</div>
+	<% if can? :update, @article %>
+	    <%= link_to "Edit", edit_admin_article_path(@article) %>
+	<% end %>
+	<% if can? :destroy, @article %>
+	    <%= form_for([:admin, @article], :method => 'delete') do |f| %>
+	        <%= f.submit('delete') %>
+	    <% end %>
+	<% end %>
+</div>
+
+<div class="column rightcolumn">
+	<%= render "layouts/latest_news"%>
+</div>

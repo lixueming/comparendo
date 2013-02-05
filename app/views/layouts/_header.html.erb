@@ -1,0 +1,84 @@
+<div id="header-contents-wrapper">
+  <div id="logo" style='outline: 0;'>
+    <%= link_to "/" do %>
+      <img src="/assets/comparendo-log.png" width="410" height="67" alt="Comparendo" style='outline: 0;' />
+    <% end %>
+  </div>
+
+  <div id="search-login-wrapper">
+    <div id="login-wrapper">
+      <% if user_signed_in? %>
+        <p>
+          <%= t(:welcome) %>, <b><%= current_user.first_name %>!</b>&nbsp;&nbsp;
+          <%= link_to "Mein Comparendo", profil_users_path %>
+          |
+          <%= link_to t(:logout), destroy_user_session_path, method: :delete %>
+        </p>
+      <% else %>
+
+        <p>
+          <img src="/assets/fb-icon.png" width="16" height="16" alt="Facebook" style="float:left; margin:-2px 0 0 0;" />
+           <%= link_to t(:loginwithfacebook), user_omniauth_authorize_path(:facebook) %>
+          |
+          <%= link_to t(:login), new_user_session_url %>
+          |
+          <%= link_to t(:register), new_user_registration_url %>
+        </p>
+      <% end %>
+    </div>
+
+    <div id="search-wrapper">
+      <%= form_tag(search_path, :method => "POST", remote: true) do %>
+        <%= text_field_tag "q", t(:searchdefault),
+                           {:class=>"searcfield",
+                            :onfocus => "watermark('q','Kategorie, Region, Stichwort...')",
+                            :onblur => "watermark('q','Kategorie, Unterkategorie, Region, Stichwort...')"} %>
+                            <!-- ,
+                            :data => {:autocomplete_source=>autocomplete_company_tag_article_path}} %> -->
+        <%= submit_tag("Suchen", :class => "searchbutton") %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="clr"></div>
+
+  <div id="menu-wrapper">
+    <ul class="cssMenu cssMenum">
+      <li class=" cssMenui0">
+        <%= link_to t('top_menu.home'), root_path, class: "cssMenui" %>
+      </li>
+      <li class=" cssMenui0">
+        <%= link_to t('top_menu.request_for_quotation'), new_offer_path, class: "cssMenui0" %>
+      </li>
+      <li class=" cssMenui0">
+        <%= link_to t('top_menu.register_company'), company_add_path, class: "cssMenui0" %>
+      </li>      
+      <li class=" cssMenui0">
+        <%= link_to t('top_menu.about'), {:controller => :article, :action => :overview}, class: "cssMenui0" %>
+      </li>
+      <li class=" cssMenui0">
+        <%= link_to t('top_menu.contact_us'), '/kontakt', class: "cssMenui0" %>
+      </li>
+      <li class=" cssMenui0">
+        <%= link_to t('top_menu.about_us'), '/about', class: "cssMenui0" %>
+      </li>
+      
+      
+    </ul>
+
+    <%#= tabs_tag open_tabs: {class: "sf-menu"} do |tab| %>
+        <%#= tab.home t('top_menu.home'), root_path %>
+        <%#= tab.search t('top_menu.find_an_architect'), root_path %>
+        <%#= tab.offer t('top_menu.request_for_quotation'), new_offer_path  do %>
+          <%#= tabs_tag do |stab| %>
+            <%#= stab.offer "Architekten in Zürich", new_offer_path %>
+          <%# end %>
+        <%# end %>
+        <%#= tab.article t('top_menu.about'), {:controller => :article, :action => :overview} %>
+        <%#= tab.company t('top_menu.register_company'), company_add_path %>
+        <%#= tab.contact_us t('top_menu.contact_us'), '/kontakt' %>
+    <%# end %>
+
+
+  </div>
+</div>

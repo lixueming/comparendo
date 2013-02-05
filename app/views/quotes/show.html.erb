@@ -1,0 +1,12 @@
+<h1>Geben Sie nun bitte einige zusätzliche Informationen zu Ihrem Projekt an</h1>
+<div class="column leftcolumn">
+	<p>Description : <%= @project.description %></p>
+	<p>Budget : <%= @project.budget %></p>
+	<p>Timeframe : <%= @project.start_date.to_s(:db) %> - <%= @project.end_date.to_s(:db) %></p>
+	<p>Location : <%= @project.region.nil? ? "all-of-Switzerland" : @project.region.name %></p>
+	<ul>
+		<% @project.project_options.each do |option| %>
+		    <li><%= option.to_s %></li>
+		<% end %>
+	</ul>
+</div>

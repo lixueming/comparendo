@@ -1,0 +1,44 @@
+<% content_for :head do %>
+    <script type="text/javascript">
+        $(function() {
+            $('.tags').tagsInput({
+                autocomplete_url: "/admin/articles/tags",
+                interactive: true
+            });
+        });
+    </script>
+<% end %>
+
+
+<%= form_for(@article, :url => {:action => action}, :html => {:multipart => true} ) do |f| %>
+    <table>
+        <tr>
+            <td><%= f.label(:title) %></td>
+            <td><%= f.text_field(:title) %></td>
+        </tr>
+        <tr>
+            <td><%= f.label(:body) %></td>
+            <td><%= f.text_area(:body, {:rows => 5, :class => "ckeditor"}) %></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><%= image_tag @article.cover_image.url if @article.has_cover_image? %></td>
+        </tr>
+        <tr>
+            <%= f.fields_for :images do |builder| %>
+                <td><%= builder.label :image, "Image" %></td>
+                <td><%= builder.file_field :image %></td>
+            <% end %>
+        </tr>
+        <tr>
+            <td><label>Tags</label></td>
+            <td><%= f.text_field(:tags, {:class => 'tags'}) %></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <%= f.submit('submit') %>
+            </td>
+        </tr>
+    </table>
+<% end %>

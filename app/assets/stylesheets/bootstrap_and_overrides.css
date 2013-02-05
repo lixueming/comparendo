@@ -1,0 +1,41 @@
+h1 {
+  color: #444;
+  font-size: 18px;
+  margin: 10px;
+}
+
+h2 {
+  color: #444;
+  font-size: 17px;
+}
+
+input.error {
+  border-color: #b94a48;
+}
+
+/* Tooltip overrides */
+.tooltip {
+  font-size: 12px;
+}
+.tooltip.top .tooltip-arrow {
+  border-top: 5px solid #cfc;
+}
+.tooltip.left .tooltip-arrow {
+  border-left: 5px solid #cfc;
+}
+.tooltip.bottom .tooltip-arrow {
+  border-bottom: 5px solid #cfc;
+}
+.tooltip.right .tooltip-arrow {
+  border-right: 5px solid #cfc;
+
+}
+.tooltip-inner {
+  max-width: 300px;
+  color: #444;
+  background-color: #cfc;
+}
+input.btn,
+input.btn[type="submit"] {
+  outline:none;
+}
