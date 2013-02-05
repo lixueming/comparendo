@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     SimplesIdeias::I18n.export! if Rails.env.development?
   end
 
-  #check_authorization
+  #check_authorizatio
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
