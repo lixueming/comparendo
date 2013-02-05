@@ -65,7 +65,7 @@
 
   <div id="map-switzerland" style="z-index:1;">
     <ul class="switzerland">
-      <% if !Country.where(:name => 'Switzerland').first.blank? %>
+      <% if !Country.where(:name => 'Switzerland').first.blank? %> <!-- add by xueming -->
         <% Country.where(:name => 'Switzerland').first.regions.order(:name).each_with_index do |r,i| %>
           <li class="ch<%= i+1 %>">
             <a href="javascript:mapClick('<%= r.name %>')"><%= r.name %></a>
